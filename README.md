@@ -60,7 +60,7 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
     ?- pack([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [[a,a,a,a],[b],[c,c],[a,a],[d],[e,e,e,e]]
 
-**1.10 (\*) Кодирование повторов для списка.**
+**1.10 (\*) Кодирование повторов для списка.**  
 Используйте результаты выполнения задачи 1.09 для реализации алгоритма сжатия данных методом [кодирования длин серий](http://en.wikipedia.org/wiki/Run-length_encoding). 
 Последовательные дубликаты элементов кодируются записью [N,E], где N - это количество дубликатов элемента E.  
 Пример:
@@ -68,7 +68,7 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
     ?- encode([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [[4,a],[1,b],[2,c],[2,a],[1,d][4,e]]
 
-**1.11 (\*) Модификация алгоритма кодирования повторов.**
+**1.11 (\*) Модификация алгоритма кодирования повторов.**  
 Измените результат выполнения задачи 1.10 такми образом, что если элемент не имеет дубликатов, он просто копируется в результирующий список. 
 Только элементы с дубликатами заменяйте записью [N,E].
 Пример:
@@ -76,58 +76,67 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
     ?- encode_modified([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [[4,a],b,[2,c],[2,a],d,[4,e]]
 
-**1.12 (\*\*) Decode a run-length encoded list.**
-    Given a run-length code list generated as specified in problem 1.11. Construct its uncompressed version.
+**1.12 (\*\*) Разархивируйте список, запакованный алгоритмом кодирования повторов.**    
+Для закодированного списка, полученного в задаче 1.11, постройте его изначальный список с дубликатами.   
 
-**1.13 (\*\*) Run-length encoding of a list (direct solution).
-    Implement the so-called run-length encoding data compression method directly. I.e. don't explicitly create the sublists containing the duplicates, as in problem 1.09, but only count them. As in problem 1.11, simplify the result list by replacing the singleton terms [1,X] by X.
+**1.13 (\*\*) Кодирование повторов для списка (решение напрямую).**  
+Реализуйте алгоритм сжатия методом кодирования повторов напрямую. То есть, не создавайте подсписки, содержащие дубликаты, как в задаче 1.09, а просто считайте их. Так же, как и в задаче 1.11, упростите результат, заменяя записи [1,X] на X.  
 
 Пример:
+
     ?- encode_direct([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [[4,a],b,[2,c],[2,a],d,[4,e]]
 
-**1.14 (\*) Duplicate the elements of a list.
+**1.14 (\*) Повторить элементы списка.**  
 Пример:
+
     ?- dupli([a,b,c,c,d],X).
     X = [a,a,b,b,c,c,c,c,d,d]
 
-**1.15 (\*\*) Duplicate the elements of a list a given number of times.
+**1.15 (\*\*) Повторить элементы списка заданное количество раз.**  
 Пример:
+
     ?- dupli([a,b,c],3,X).
     X = [a,a,a,b,b,b,c,c,c]
 
-    What are the results of the goal:
+Что будет являться результатом данного выражения?:
+ 
     ?- dupli(X,3,Y).
 
-**1.16 (\*\*) Drop every N'th element from a list.
+**1.16 (\*\*) Удалить каждый N-ный элемент списка.**  
 Пример:
+
     ?- drop([a,b,c,d,e,f,g,h,i,k],3,X).
     X = [a,b,d,e,g,h,k]
 
-**1.17 (\*) Split a list into two parts; the length of the first part is given.
-    Do not use any predefined predicates.
+**1.17 (\*) Разбить список на две части с заданной длиной первой части.**  
+Сделайте это без использования методов встроенных в язык библиотек.  
 
 Пример:
+
     ?- split([a,b,c,d,e,f,g,h,i,k],3,L1,L2).
     L1 = [a,b,c]
     L2 = [d,e,f,g,h,i,k]
 
-**1.18 (\*\*) Extract a slice from a list.
-    Given two indices, I and K, the slice is the list containing the elements between the I'th and K'th element of the original list (both limits included). Start counting the elements with 1.
+**1.18 (\*\*) Извлеките подсписок из списка.**  
+Для заданных I и K, подсписком будет список с элементами с I-того по K-тый (с обеих сторон включительно).
+Первый элемент имееть порядковый номер 1.
 
 Пример:
+
     ?- slice([a,b,c,d,e,f,g,h,i,k],3,7,L).
     X = [c,d,e,f,g]
 
-**1.19 (\*\*) Rotate a list N places to the left.
-    Examples:
+**1.19 (\*\*) Rotate a list N places to the left.**
+Примеры:
+
     ?- rotate([a,b,c,d,e,f,g,h],3,X).
     X = [d,e,f,g,h,a,b,c]
 
     ?- rotate([a,b,c,d,e,f,g,h],-2,X).
     X = [g,h,a,b,c,d,e,f]
 
-    Подсказка: Use the predefined predicates length/2 and append/3, as well as the result of problem 1.17.
+Подсказка: Use the predefined predicates length/2 and append/3, as well as the result of problem 1.17.
 
 **1.20 (\*) Remove the K'th element from a list.
 Пример:
