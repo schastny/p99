@@ -1,7 +1,7 @@
 p99
 ===
 
-P-99: Ninety-Nine Prolog Problems (99 задач на прологе)
+P-99: Ninety-Nine Prolog Problems (99 задач на прологе)  
 Original: https://sites.google.com/site/prologsite/prolog-problems
 
 P-99: 99 задач на прологе  
