@@ -68,14 +68,15 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
     ?- encode([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [[4,a],[1,b],[2,c],[2,a],[1,d][4,e]]
 
-**1.11 (\*) Modified run-length encoding.
-    Modify the result of problem 1.10 in such a way that if an element has no duplicates it is simply copied into the result list. Only elements with duplicates are transferred as [N,E] terms.
-
+**1.11 (\*) Модификация алгоритма кодирования повторов.**
+Измените результат выполнения задачи 1.10 такми образом, что если элемент не имеет дубликатов, он просто копируется в результирующий список. 
+Только элементы с дубликатами заменяйте записью [N,E].
 Пример:
+
     ?- encode_modified([a,a,a,a,b,c,c,a,a,d,e,e,e,e],X).
     X = [[4,a],b,[2,c],[2,a],d,[4,e]]
 
-**1.12 (\*\*) Decode a run-length encoded list.
+**1.12 (\*\*) Decode a run-length encoded list.**
     Given a run-length code list generated as specified in problem 1.11. Construct its uncompressed version.
 
 **1.13 (\*\*) Run-length encoding of a list (direct solution).
