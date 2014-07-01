@@ -99,7 +99,7 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
     ?- dupli([a,b,c],3,X).
     X = [a,a,a,b,b,b,c,c,c]
 
-Что будет являться результатом данного выражения?:
+Что будет являться результатом данного выражения?
  
     ?- dupli(X,3,Y).
 
@@ -127,7 +127,7 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
     ?- slice([a,b,c,d,e,f,g,h,i,k],3,7,L).
     X = [c,d,e,f,g]
 
-**1.19 (\*\*) Rotate a list N places to the left.**
+**1.19 (\*\*) Сдвинуть список на N позиций влево.**
 Примеры:
 
     ?- rotate([a,b,c,d,e,f,g,h],3,X).
@@ -136,49 +136,56 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
     ?- rotate([a,b,c,d,e,f,g,h],-2,X).
     X = [g,h,a,b,c,d,e,f]
 
-Подсказка: Use the predefined predicates length/2 and append/3, as well as the result of problem 1.17.
+Подсказка: Используйте встроенные в язык методы length/2 и append/3, и результаты задачи 1.17.
 
-**1.20 (\*) Remove the K'th element from a list.
+**1.20 (\*) Удалить K-тый элемент из списка.**  
 Пример:
+
     ?- remove_at(X,[a,b,c,d],2,R).
     X = b
     R = [a,c,d]
 
-**1.21 (\*) Insert an element at a given position into a list.
+**1.21 (\*) Вставить элемент в список на заданную позицию.**  
 Пример:
+
     ?- insert_at(alfa,[a,b,c,d],2,L).
     L = [a,alfa,b,c,d]
 
-**1.22 (\*) Create a list containing all integers within a given range.
+**1.22 (\*) Создать список, содержащий все целые числа заданного диапазона.**  
 Пример:
+
     ?- range(4,9,L).
     L = [4,5,6,7,8,9]
 
-**1.23 (\*\*) Extract a given number of randomly selected elements from a list.
-    The selected items shall be put into a result list.
+**1.23 (\*\*) Извлечь заданное количество случайно выбранных элементов из списка.**  
+Извлечённые элементы поместите в результирующий список.  
+    
 Пример:
+
     ?- rnd_select([a,b,c,d,e,f,g,h],3,L).
     L = [e,d,a]
 
-    Подсказка: Use the built-in random number generator random/2 and the result of problem 1.20.
+Подсказка: Используйте встроенный генератор случайных чисел random/2 и результаты задачи 1.20.
 
-**1.24 (\*) Lotto: Draw N different random numbers from the set 1..M.
-    The selected numbers shall be put into a result list.
+**1.24 (\*) Лотерея: Выведите на экран N различных случайных чисел из диапазона 1..M.**  
+Извлечённые элементы поместите в результирующий список.  
 Пример:
+
     ?- rnd_select(6,49,L).
     L = [23,1,17,33,21,37]
 
-    Подсказка: Combine the solutions of problems 1.22 and 1.23.
+Подсказка: Комбинируйте решения задач 1.22 и 1.23.
 
-**1.25 (\*) Generate a random permutation of the elements of a list.
+**1.25 (\*) Сгенерируйте случайную перестановку элементов списка.**  
 Пример:
+
     ?- rnd_permu([a,b,c,d,e,f],L).
     L = [b,a,d,c,e,f]
 
-    Подсказка: Use the solution of problem 1.23.
+Подсказка: Используйте решение к задаче 1.23.
 
-**1.26 (\*\*) Generate the combinations of K distinct objects chosen from the N elements of a list
-    In how many ways can a committee of 3 be chosen from a group of 12 people? We all know that there are C(12,3) = 220 possibilities (C(N,K) denotes the well-known binomial coefficients). For pure mathematicians, this result may be great. But we want to really generate all the possibilities (via backtracking).
+**1.26 (\*\*) Generate the combinations of K distinct objects chosen from the N elements of a list**
+In how many ways can a committee of 3 be chosen from a group of 12 people? We all know that there are C(12,3) = 220 possibilities (C(N,K) denotes the well-known binomial coefficients). For pure mathematicians, this result may be great. But we want to really generate all the possibilities (via backtracking).
 
 Пример:
     ?- combination(3,[a,b,c,d,e,f],L).
@@ -187,7 +194,7 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
     L = [a,b,e] ;
     ...
 
-**1.27 (\*\*) Group the elements of a set into disjoint subsets.
+**1.27 (\*\*) Group the elements of a set into disjoint subsets.**
     a) In how many ways can a group of 9 people work in 3 disjoint subgroups of 2, 3 and 4 persons? Write a predicate that generates all the possibilities via backtracking.
 
 Пример:
@@ -198,24 +205,27 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
     b) Generalize the above predicate in a way that we can specify a list of group sizes and the predicate will return a list of groups.
 
 Пример:
+
     ?- group([aldo,beat,carla,david,evi,flip,gary,hugo,ida],[2,2,5],Gs).
     Gs = [[aldo,beat],[carla,david],[evi,flip,gary,hugo,ida]]
     ...
 
-    Note that we do not want permutations of the group members; i.e. [[aldo,beat],...] is the same solution as [[beat,aldo],...]. However, we make a difference between [[aldo,beat],[carla,david],...] and [[carla,david],[aldo,beat],...].
+Note that we do not want permutations of the group members; i.e. [[aldo,beat],...] is the same solution as [[beat,aldo],...]. However, we make a difference between [[aldo,beat],[carla,david],...] and [[carla,david],[aldo,beat],...].
 
-    You may find more about this combinatorial problem in a good book on discrete mathematics under the term "multinomial coefficients".
+You may find more about this combinatorial problem in a good book on discrete mathematics under the term "multinomial coefficients".
 
-**1.28 (\*\*) Sorting a list of lists according to length of sublists
+**1.28 (\*\*) Sorting a list of lists according to length of sublists**
     a) We suppose that a list (InList) contains elements that are lists themselves. The objective is to sort the elements of InList according to their length. E.g. short lists first, longer lists later, or vice versa.
 
 Пример:
+
     ?- lsort([[a,b,c],[d,e],[f,g,h],[d,e],[i,j,k,l],[m,n],[o]],L).
     L = [[o], [d, e], [d, e], [m, n], [a, b, c], [f, g, h], [i, j, k, l]]
 
     b) Again, we suppose that a list (InList) contains elements that are lists themselves. But this time the objective is to sort the elements of InList according to their length frequency; i.e. in the default, where sorting is done ascendingly, lists with rare lengths are placed first, others with a more frequent length come later.
 
 Пример:
+
     ?- lfsort([[a,b,c],[d,e],[f,g,h],[d,e],[i,j,k,l],[m,n],[o]],L).
     L = [[i, j, k, l], [o], [a, b, c], [f, g, h], [d, e], [d, e], [m, n]]
 
