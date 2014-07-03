@@ -1,4 +1,4 @@
-##P-99: Ninety-Nine Prolog Problems (P-99: 99 задач на прологе)  
+##P-99: Ninety-Nine Prolog Problems (P-99: 99 задач на Прологе)  
 Original: https://sites.google.com/site/prologsite/prolog-problems  
 Автор: Werner Hett    
 
@@ -189,25 +189,27 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
 
 Подсказка: Используйте решение к задаче 1.23.
 
-**1.26 (\*\*) Generate the combinations of K distinct objects chosen from the N elements of a list**
-In how many ways can a committee of 3 be chosen from a group of 12 people? We all know that there are C(12,3) = 220 possibilities (C(N,K) denotes the well-known binomial coefficients). For pure mathematicians, this result may be great. But we want to really generate all the possibilities (via backtracking).
+**1.26 (\*\*) Выведите все комбинации неповторяемых K элементов, выбранных из набора N**
+Сколько есть вариантов выбрать комитет из 3-х человек из группы в 12 человек? Мы все знаем, что это C(12,3) = 220 разных вариантов (C(N,K) обозначает биноминальный коэффициент). Для математиков данный результат был бы достаточен. Но мы хотим увидеть не только цифру, но и все возможные комбинации.  
 
 Пример:
+
     ?- combination(3,[a,b,c,d,e,f],L).
     L = [a,b,c] ;
     L = [a,b,d] ;
     L = [a,b,e] ;
     ...
 
-**1.27 (\*\*) Group the elements of a set into disjoint subsets.**
-    a) In how many ways can a group of 9 people work in 3 disjoint subgroups of 2, 3 and 4 persons? Write a predicate that generates all the possibilities via backtracking.
+**1.27 (\*\*) Сгруппируй элементы из набора в непересекаемые подмножества.**
+a) Сколькими способами группа из 9 человек может работать в трёх подгруппах по 2, 3 и 4 человека? Напишите метод, генерирующий все возможные варианты.  
 
 Пример:
+
     ?- group3([aldo,beat,carla,david,evi,flip,gary,hugo,ida],G1,G2,G3).
     G1 = [aldo,beat], G2 = [carla,david,evi], G3 = [flip,gary,hugo,ida]
     ...
 
-    b) Generalize the above predicate in a way that we can specify a list of group sizes and the predicate will return a list of groups.
+b) Обобщите решение таким образом, чтобы можно было задавать список с размерами групп, а метод будет возвращать список этих групп.   
 
 Пример:
 
@@ -215,23 +217,32 @@ In how many ways can a committee of 3 be chosen from a group of 12 people? We al
     Gs = [[aldo,beat],[carla,david],[evi,flip,gary,hugo,ida]]
     ...
 
-Note that we do not want permutations of the group members; i.e. [[aldo,beat],...] is the same solution as [[beat,aldo],...]. However, we make a difference between [[aldo,beat],[carla,david],...] and [[carla,david],[aldo,beat],...].
+Примечание: Исключите из результатов перестановки внутри группы, то есть результаты [[aldo,beat],...] и [[beat,aldo],...] рассматривайте как одно решение.
+При этом рассматривайте как два разных решения перестановки самих групп. 
+Например: [[aldo,beat],[carla,david],...] и [[carla,david],[aldo,beat],...] будут разными решениями.
 
-You may find more about this combinatorial problem in a good book on discrete mathematics under the term "multinomial coefficients".
+Более детально ознакомиться с данной задачей на комбинаторику вы можете в любой хорошей книге по дискретной математике 
+(под термином "мультиноминальные коэффициенты" - multinomial coefficients).
 
-**1.28 (\*\*) Sorting a list of lists according to length of sublists**
-    a) We suppose that a list (InList) contains elements that are lists themselves. The objective is to sort the elements of InList according to their length. E.g. short lists first, longer lists later, or vice versa.
+**1.28 (\*\*) Сортировка списка списков по длине его элементов (подсписков)**
+a) Для данной задачи мы предполагаем, что список InList состоит из элементов, которые также являются списками. 
+Наша цель - отсортировать элементы списка InList по длине, от самых коротких, к длинным, или наоборот.    
 
 Пример:
 
     ?- lsort([[a,b,c],[d,e],[f,g,h],[d,e],[i,j,k,l],[m,n],[o]],L).
     L = [[o], [d, e], [d, e], [m, n], [a, b, c], [f, g, h], [i, j, k, l]]
 
-    b) Again, we suppose that a list (InList) contains elements that are lists themselves. But this time the objective is to sort the elements of InList according to their length frequency; i.e. in the default, where sorting is done ascendingly, lists with rare lengths are placed first, others with a more frequent length come later.
+b) Также, как и в подпункте а), мы предполагаем, что список (InList) содержит элементы-списки.
+Но в этот раз задача - отсортировать элементы списка InList по частоте появления длин списков.  
+То есть, сначала идут списки, длина которых наиболее редкая, затем те, длина которых появляется чаще.   
 
 Пример:
 
     ?- lfsort([[a,b,c],[d,e],[f,g,h],[d,e],[i,j,k,l],[m,n],[o]],L).
     L = [[i, j, k, l], [o], [a, b, c], [f, g, h], [d, e], [d, e], [m, n]]
 
-    Note that in the above example, the first two lists in the result L have length 4 and 1, both lengths appear just once. The third and forth list have length 3; there are two list of this length. And finally, the last three lists have length 2. This is the most frequent length.
+Отметьте, что в приведённом примере, первые два списка из результирующего списка L имеют длину 4 и 1, 
+такие длины встречаются среди всех списков всего лишь по одному разу. 
+Третий и четвёртый списки имеют длину 3, то есть имеется два списка этой длины. 
+И наконец, последние три списка имеют длину 2. Такая длина наиболее часто встетилась в исходном наборе.
