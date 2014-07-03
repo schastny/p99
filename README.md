@@ -1,4 +1,4 @@
-##P-99: Ninety-Nine Prolog Problems (P-99: 99 задач на Прологе)  
+#P-99: Ninety-Nine Prolog Problems (P-99: 99 задач на Прологе)  
 Original: https://sites.google.com/site/prologsite/prolog-problems  
 Автор: Werner Hett    
 
@@ -15,10 +15,11 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
 Задачи, помеченные тремя звёздочками (\*\*\*) являются сложными. 
 Вам может понадобиться несколько часов и больше для того, чтобы найти хорошее решение.  
 
-##Задачи
-###Списки
+#Задачи
+##Списки
 
 [I'm a relative reference to a repository file](../lists.txt)
+[a relative link](lists.md)
 
 Список может быть либо пустым, либо состоять из головного элемента (head) и хвоста (tail), который в свою очередь является списком. В прологе пустой список помечается [], а непустой - [H|T], где H - головной элемент, T - хвост.
 
