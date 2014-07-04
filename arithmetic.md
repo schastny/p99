@@ -1,38 +1,48 @@
-**2.01 (\*\*) Determine whether a given integer number is prime.**
+##Арифметические задачи  
+
+**2.01 (\*\*) Определить, является ли данное целое положительное число простым.** 
+То есть это число не делится ни на какое другое число, кроме самого себя и единицы.
 Пример:  
 
     ?- is_prime(7).
     Yes
 
-**2.02 (\*\*) Determine the prime factors of a given positive integer.**
-Construct a flat list containing the prime factors in ascending order.
+**2.02 (\*\*) Разложить число на натуральные делители.**
+Построить список, содержащий все делители для данного целого положительного числа в отсортированном виде.  
 Пример:  
 
     ?- prime_factors(315, L).
     L = [3,3,5,7]
 
-**2.03 (\*\*) Determine the prime factors of a given positive integer (2).**
-Construct a list containing the prime factors and their multiplicity.  
+**2.03 (\*\*) Разложить число на натуральные делители (2).**
+Построить список, содержащий все делители для данного целого положительного числа, для каждого делителя указать количество раз его использования.  
 Пример:  
 
     ?- prime_factors_mult(315, L).
     L = [[3,2],[5,1],[7,1]]
 
-Подсказка: The solution of problem 1.10 may be helpful.
+Подсказка: Вам может пригодиться решение задачи 1.10.
 
-**2.04 (\*) A list of prime numbers.**
-Given a range of integers by its lower and upper limit, construct a list of all prime numbers in that range.
+**2.04 (\*) Список простых чисел.**
+Для заданного диапазона целых чисел, вывести список всех простых чисел, попадающих в данный диапазон.
 
-**2.05 (\*\*) Goldbach's conjecture.**
-Goldbach's conjecture says that every positive even number greater than 2 is the sum of two prime numbers. Example: 28 = 5 + 23. It is one of the most famous facts in number theory that has not been proved to be correct in the general case. It has been numerically confirmed up to very large numbers (much larger than we can go with our Prolog system). Write a predicate to find the two prime numbers that sum up to a given even integer.
+**2.05 (\*\*) Проблема Гольдбаха.**
+Проблема Гольдбаха [Goldbach's conjecture](http://en.wikipedia.org/wiki/Goldbach%27s_conjecture) 
+- утверждение о том, что любое чётное число, начиная с 2, можно представить в виде суммы двух простых чисел. 
+ 
+Пример: 28 = 5 + 23.  
+Это одна из самых известных проблем в теории чисел, которая до сих пор остаётся недоказанной в целом. 
+Она была лишь проверена на достаточно большом диапазоне чисел (намного больше, чем мы сможем сделать на Прологе). 
+Напишите метод, который для заданного чётного числа находит его числа Гольдбаха 
+(два простых числа, которые в сумме дадут заданное чётное число).
 
 Пример:  
 
     ?- goldbach(28, L).
     L = [5,23]
 
-**2.06 (\*\*) A list of Goldbach compositions.**
-Given a range of integers by its lower and upper limit, print a list of all even numbers and their Goldbach composition.
+**2.06 (\*\*) Список чисел Гольдбаха.**
+Для заданного диапазона чисел, напечатайте список всех чётных чисел и их слагаемые Гольдбаха.
 
 Пример:  
 
@@ -44,9 +54,11 @@ Given a range of integers by its lower and upper limit, print a list of all even
     18 = 5 + 13
     20 = 3 + 17
 
-In most cases, if an even number is written as the sum of two prime numbers, one of them is very small. Very rarely, the primes are both bigger than say 50. Try to find out how many such cases there are in the range 2..3000.
+В большинстве случаев, если чётное число записано в виде суммы двух простых чисел, одно из них очень мало. 
+Очень редки случаи, когда оба слагаемых больше, скажем 50. 
+Попытайтесь выяснить, как много таких случаев попадается в диапазоне 2..3000.
 
-Example (for a print limit of 50):
+Пример (для граничного значения в 50):
 
     ?- goldbach_list(1,2000,50).
     992 = 73 + 919
@@ -54,39 +66,44 @@ Example (for a print limit of 50):
     1856 = 67 + 1789
     1928 = 61 + 1867
 
-**2.07 (\*\*) Determine the greatest common divisor of two positive integer numbers.**
-Use Euclid's algorithm.  
+**2.07 (\*\*) Определить наибольший общий делитель для двух положительных целых чисел.**
+Используйте алгоритм [Евклида](http://en.wikipedia.org/wiki/Euclidean_algorithm).  
 Пример:
 
     ?- gcd(36, 63, G).
     G = 9
 
-    Define gcd as an arithmetic function; so you can use it like this:
+Определите gcd как арифметическую функцию, чтобы потом её использовать следующим образом: 
+
     ?- G is gcd(36,63).
     G = 9
 
-**2.08 (\*) Determine whether two positive integer numbers are coprime.**
-    Two numbers are coprime if their greatest common divisor equals 1.
+**2.08 (\*) Определить, являются ли два положительных целых числа [взаимно простыми](http://en.wikipedia.org/wiki/Coprime_integers).**
+Целые числа называются взаимно простыми, если они не имеют никаких общих делителей, кроме 1 
+(Иными словами, их наибольший общий делитель равняется 1).
 Пример:  
 
     ?- coprime(35, 64).
     Yes
 
-**2.09 (\*\*) Calculate Euler's totient function phi(m).**
-Euler's so-called totient function phi(m) is defined as the number of positive integers r (1 <= r < m) that are coprime to m.
-
-Пример: m = 10: r = 1,3,7,9; thus phi(m) = 4. Note the special case: phi(1) = 1.
-
+**2.09 (\*\*) Вычислить функцию Эйлера phi(m).**
+[Функция Эйлера](http://en.wikipedia.org/wiki/Euler%27s_totient_function) phi(m) определяется как 
+количество натуральных чисел, меньших m и взаимно простых с ним.  
+При этом есть особый случай: phi(1) = 1.
+Пример:
+ 
+    m = 10: r = 1,3,7,9; 
+    следовательно phi(m) = 4. 
     ?- Phi is totient_phi(10).
     Phi = 4
 
-Find out what the value of phi(m) is if m is a prime number. 
-Euler's totient function plays an important role in one of the most widely used public key cryptography methods (RSA). 
-In this exercise you should use the most primitive method to calculate this function. 
-There is a smarter way that we shall use in 2.10.
+Определите, какое будет значение функции phi(m), если m является простым числом. 
+Функция Эйлера играет важную роль в одном из широко распространённых криптографических алгоритмов с открытым ключём (RSA). 
+В данном упражнении вам можно использовать наиболее простой метод для вычисления этой функции. 
+Более изящное решение будет рассматриваться в секции 2.10.
 
-**2.10 (\*\*) Calculate Euler's totient function phi(m) (2).**
-See problem 2.09 for the definition of Euler's totient function. 
+**2.10 (\*\*) Вычислить функцию Эйлера phi(m) (2).**
+Определение функции Эйлера смотри в задаче 2.09. 
 If the list of the prime factors of a number m is known in the form of problem 2.03 
 then the function phi(m) can be efficiently calculated as follows: 
 Let [[p1,m1],[p2,m2],[p3,m3],...] be the list of prime factors (and their multiplicities) of a given number m. 
