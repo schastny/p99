@@ -16,7 +16,7 @@ class Task02 {
       lastButOne(list.tail)
   }
 
-  def lastButOne(list: List[Any]): Any = {
+  private def lastButOne(list: List[Any]): Any = {
     if (list.tail.tail == Nil)
       list.head
     else
