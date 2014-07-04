@@ -1,6 +1,6 @@
 package problems.section1
 
-class Task03 {
+object Task03 {
 
   /**
    *   1.03 (*) Find the K'th element of a list.<br/>

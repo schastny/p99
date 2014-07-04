@@ -1,6 +1,6 @@
 package problems.section1
 
-class Task01 {
+object Task01 {
 
   /**
    * 1.01 (*) Find the last element of a list.<br/>

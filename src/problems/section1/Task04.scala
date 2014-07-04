@@ -1,6 +1,6 @@
 package problems.section1
 
-class Task04 {
+object Task04 {
 
   /**
    * 1.04 (*) Find the number of elements of a list.

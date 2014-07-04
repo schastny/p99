@@ -1,6 +1,6 @@
 package problems.section1
 
-class Task02 {
+object Task02 {
 
   /**
    * 1.02 (*) Find the last but one element of a list.

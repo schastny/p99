@@ -6,30 +6,47 @@ object Launcher {
 //    testTask01
 //    testTask02
 //    testTask03
-    testTask04
+//    testTask04
+//    testTask05
+    testTask06
   }
 
   def testTask01 {
     println {
-      new Task01() lastElement List(1,2,3,45)
+      Task01 lastElement List(1,2,3,45)
     }
   }
 
   def testTask02 {
     println {
-      new Task02() lastButOneElement List(1,2,3,4,5,6,7)
+      Task02 lastButOneElement List(1,2,3,4,5,6,7)
     }
   }
 
   def testTask03 {
     println {
-      new Task03() elementAt(List(1,2,3), 2)
+      Task03 elementAt(List(1,2,3), 2)
     }
   }
 
   def testTask04 {
     println {
-      new Task04() countElements List(1,2,3,4)
+      Task04 countElements List(1,2,3,4)
+    }
+  }
+
+  def testTask05 {
+    println {
+      Task05 reverseList List(1,2,3,4)
+    }
+  }
+
+  def testTask06 {
+    println {
+      Task06 palindrome List(1,2,2,1)
+    }
+    println {
+      Task06 palindrome List('x','a','m','a','x')
     }
   }
 
