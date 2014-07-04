@@ -3,9 +3,27 @@ package problems.section1
 object Launcher {
 
   def main(args: Array[String]) {
-    val list = List(1,2,3,44,6)
-    val x = new Task01().myLast(list)
-    println(x)
+//    testTask01
+//    testTask02
+    testTask03
+  }
+
+  def testTask01 {
+    println {
+      new Task01() lastElement(List(1,2,3,45))
+    }
+  }
+
+  def testTask02 {
+    println {
+      new Task02() lastButOneElement(List(1,2,3,4,5,6,7))
+    }
+  }
+
+  def testTask03 {
+    println {
+      new Task03() elementAt(List(1,2,3), 2)
+    }
   }
 
 }
