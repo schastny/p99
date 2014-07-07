@@ -17,7 +17,7 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
 
 #Задачи
 1. [Списки](lists.md)
-2. [Arithmetic](arithmetic.md)
+2. [Арифметические задачи](arithmetic.md)
 3. [Logic and Codes](logic.md)
 4. [Binary Trees](binarytrees.md)
 5. [Multiway Trees](multiwaytrees.md)
