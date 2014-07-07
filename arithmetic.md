@@ -104,19 +104,19 @@
 
 **2.10 (\*\*) Вычислить функцию Эйлера phi(m) (2).**  
 Определение функции Эйлера смотри в задаче 2.09. 
-Если список 
-If the list of the prime factors of a number m is known in the form of problem 2.03 
-then the function phi(m) can be efficiently calculated as follows: 
-Let [[p1,m1],[p2,m2],[p3,m3],...] be the list of prime factors (and their multiplicities) of a given number m. 
-Then phi(m) can be calculated with the following formula:
+Если список натуральных делителей для числа m известен (см. задачу 2.03), 
+тогда функция phi(m) может быть эффективно вычислена следующим образом: 
+Пусть список [[p1,m1],[p2,m2],[p3,m3],...] будет набором натуральных делителей числа m (с количеством раз их использования). 
+Тогда phi(m) может быть вычислена по следующей формуле: 
 
     phi(m) = (p1 - 1) * p1**(m1 - 1) * (p2 - 1) * p2**(m2 - 1) * (p3 - 1) * p3**(m3 - 1) * ...
 
-Note that a\*\*b stands for the b'th power of a.
+Отметьте, что запись a\*\*b обозначает a в степени b.
 
-**2.11 (\*) Compare the two methods of calculating Euler's totient function.**  
-Use the solutions of problems 2.09 and 2.10 to compare the algorithms. 
-Take the number of logical inferences as a measure for efficiency. 
-Try to calculate phi(10090) as an example.  
+**2.11 (\*) 
+Сравните два метода вычисления функции Эйлера.**  
+Используйте решения из задач 2.09 и 2.10 для сравнения эффективности алгоритмов. 
+В качестве меры эффективности возьмите количество логических шагов, которые следует выполнить. 
+Для примера вычислите phi(10090).  
 
 [Предыдущая глава](lists.md) | [Оглавление](README.md) | [Следующая глава](logic.md)
