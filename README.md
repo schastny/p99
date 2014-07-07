@@ -18,8 +18,8 @@ Original: https://sites.google.com/site/prologsite/prolog-problems
 #Задачи
 1. [Списки](lists.md)
 2. [Арифметические задачи](arithmetic.md)
-3. [Logic and Codes](logic.md)
-4. [Binary Trees](binarytrees.md)
-5. [Multiway Trees](multiwaytrees.md)
-6. [Graphs](graphs.md)
-7. [Miscellaneous](misc.md)
+3. [Логика и кодирование](logic.md)
+4. [Бинарные деревья](binarytrees.md)
+5. [N-арные деревья (Multiway Trees)](multiwaytrees.md)
+6. [Графы](graphs.md)
+7. [Разное](misc.md)
