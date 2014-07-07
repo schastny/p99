@@ -8,7 +8,8 @@ object Launcher {
 //    testTask03
 //    testTask04
 //    testTask05
-    testTask06
+//    testTask06
+    testTask07
   }
 
   def testTask01 {
@@ -47,6 +48,28 @@ object Launcher {
     }
     println {
       Task06 palindrome List('x','a','m','a','x')
+    }
+  }
+
+  def testTask07 {
+    val list =
+      List(
+        'a',
+        List(
+          'b',
+          List('c', 'd'),
+          'e'
+        )
+      )
+
+    println (list)
+
+    println {
+      Task07 flatten list
+    }
+
+    println {
+      Task07 flatten2 list
     }
   }
 
