@@ -1,8 +1,10 @@
 ##Бинарные деревья
 
-A binary tree is either empty or it is composed of a root element and two successors, which are binary trees themselves.
-In Prolog we represent the empty tree by the atom 'nil' and the non-empty tree by the term t(X,L,R), 
-where X denotes the root node and L and R denote the left and right subtree, respectively. 
+Бинарное дерево является либо пустым, либо состоит из родительского узла и двух потомков, являющихся также бинарными деревьями. 
+В Прологе мы представляем пустое дерево термином 'nil', а непустое - t(X,L,R), 
+где X - родительский узел, L и R - левый и правый наследники. 
+
+![alt text](https://github.com/schastny/p99/raw/master/img/p67.gif)
 The example tree depicted opposite is therefore represented by the following Prolog term:
 
     T1 = t(a,t(b,t(d,nil,nil),t(e,nil,nil)),t(c,nil,t(f,t(g,nil,nil),nil)))
