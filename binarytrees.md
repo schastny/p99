@@ -139,12 +139,12 @@
 Напишите метод sym_cbal_trees. 
 
 **4.06 (\*\*) Постройте сбалансированное по высоте двоичное дерево (АВЛ-дерево)**  
-In a height-balanced binary tree, the following property holds for every node: 
-The height of its left subtree and the height of its right subtree are almost equal, which means their difference is not greater than one.
+В сбалансированном по высоте двоичном дереве для всех узлов выполняется следующее условие:  
+Высота левого и правого поддеревьев практически одинакова, что значит, их разница не может быть больше одного.  
 
-Write a predicate hbal_tree/2 to construct height-balanced binary trees for a given height. 
-The predicate should generate all solutions via backtracking. 
-Put the letter 'x' as information into all nodes of the tree.  
+Напишите метод hbal_tree/2 для построения АВЛ-дерева заданной высоты. 
+Метод должен возвращать все возможные варианты построения. 
+Поместите символ 'x' в качестве значения во все узлы дерева.  
 Пример:
 
     ?- hbal_tree(3,T).
@@ -152,71 +152,74 @@ Put the letter 'x' as information into all nodes of the tree.
     T = t(x, t(x, t(x, nil, nil), t(x, nil, nil)), t(x, t(x, nil, nil), nil)) ;
     etc......No
 
-**4.07 (\*\*) Construct height-balanced binary trees with a given number of nodes**  
-Consider a height-balanced binary tree of height H. 
-What is the maximum number of nodes it can contain?
-Clearly, MaxN = 2**H - 1. However, what is the minimum number MinN? 
-This question is more difficult. Try to find a recursive statement and turn it into a predicate minNodes/2 defined as follwos:
+**4.07 (\*\*) Постройте АВЛ-дерево с заданным количеством узлов**  
+Рассмотрим АВЛ дерево высотой H. Какое максимальное количество узлов оно может содержать? 
+Очевидно, что MaxN = 2**H - 1. 
+Тогда, какое будет минимальное количество узлов MinN? Этот вопрос более сложный.   
 
-    % minNodes(H,N) :- N is the minimum number of nodes in a height-balanced binary tree of height H.
+Попытайтесь найти рекурсивный алгоритм и реализовать его как метод minNodes/2 со следующей сигнатурой:
+
+    % minNodes(H,N)  , где N  - это минимальное количество узлов АВЛ-дерева H. 
     (integer,integer), (+,?)
 
-On the other hand, we might ask: what is the maximum height H a height-balanced binary tree with N nodes can have?
+С другой стороны, мы можем спросить: какова будет максимальная высота H для АВЛ-дерева, имеющего N узлов?  
 
-    % maxHeight(N,H) :- H is the maximum height of a height-balanced binary tree with N nodes
+    % maxHeight(N,H) , где H - максимальная высота АВЛ-дерева с N узлами.
     (integer,integer), (+,?)
 
-Now, we can attack the main problem: construct all the height-balanced binary trees with a given nuber of nodes.
+Теперь мы готовы решать основную проблему: построение всех АВЛ-деревьев с заданным количеством узлов. 
 
     % hbal_tree_nodes(N,T) :- T is a height-balanced binary tree with N nodes.
 
-Find out how many height-balanced trees exist for N = 15.
+Определите, сколько АВЛ-деревьев существует для N = 15.  
 
-**4.08 (\*) Count the leaves of a binary tree**  
-A leaf is a node with no successors. Write a predicate count_leaves/2 to count them.
+**4.08 (\*) Посчитать листья бинарного дерева**  
+Лист - это узел без потомков. 
+Напишите метод count_leaves/2, считающий листья дерева.
 
-    % count_leaves(T,N) :- the binary tree T has N leaves
+    % count_leaves(T,N) , где бинарное дерево T имеет N листьев.
 
-**4.09 (\*) Collect the leaves of a binary tree in a list**  
-A leaf is a node with no successors. Write a predicate leaves/2 to collect them in a list.
+**4.09 (\*) Соберите листья бинарного дерева в список**  
+Лист - это узел без потомков. 
+Напишите метод leaves/2 для сбора листьев дерева в список.  
 
-    % leaves(T,S) :- S is the list of all leaves of the binary tree T
+    % leaves(T,S) , где S - это список всех листьев бинарного дерева T.
 
-**4.10 (\*) Collect the internal nodes of a binary tree in a list**  
-An internal node of a binary tree has either one or two non-empty successors. 
-Write a predicate internals/2 to collect them in a list.
+**4.10 (\*) Соберите все внутренние узлы бинарного дерева в список**  
+Внутренний узел бинарного дерева имеет один или два непустых потомка. 
+Напишите предикат internals/2 для сбора внутренних узлов в список. 
 
-    % internals(T,S) :- S is the list of internal nodes of the binary tree T.
+    % internals(T,S) , где S - это список всех внутренних узлов бинарного дерева T.
 
-**4.11 (\*) Collect the nodes at a given level in a list**  
-A node of a binary tree is at level N if the path from the root to the node has length N-1. The root node is at level 1. 
-Write a predicate atlevel/3 to collect all nodes at a given level in a list.
+**4.11 (\*) Соберите узлы заданного уровня в список**  
+Узел бинарного дерева находится на уровне N, если путь от родительского узла до данного узла имеет длину N-1. 
+Родительский элемент находится на уровне 1. 
+Напишите метод atlevel/3 для сборки всех узлов выбранного уровня в список.  
 
-    % atlevel(T,L,S) :- S is the list of nodes of the binary tree T at level L
+    % atlevel(T,L,S) , где S - это список узлов бинарного дерева T, которые находятся на уровне L.
 
-Using atlevel/3 it is easy to construct a predicate levelorder/2 which creates the level-order sequence of the nodes. 
-However, there are more efficient ways to do that.
+Используя метод atlevel/3 легко разработать метод levelorder/2, который создаёт упорядоченную по уровню последовательность узлов. 
+При этом, существуют более эффективные способы реализации данного метода.  
 
-**4.12 (\*\*) Construct a complete binary tree**  
-A complete binary tree with height H is defined as follows: 
-The levels 1,2,3,...,H-1 contain the maximum number of nodes (i.e 2**(i-1) at the level i, 
-note that we start counting the levels from 1 at the root). 
-In level H, which may contain less than the maximum possible number of nodes, all the nodes are "left-adjusted". 
-This means that in a levelorder tree traversal all internal nodes come first, the leaves come second, and empty successors 
-(the nil's which are not really nodes!) come last.
+**4.12 (\*\*) Построить полное бинарное дерево**  
+Полное бинарное дерево высоты H определяется следующим образом:  
+Уровни 1,2,3,...,H-1 содержать максимальное количество узлов (то есть 2^(i-1) на уровне i, при этом считать мы считаем с 1 от корня). 
+На уровне H допустимо иметь меньше, чем максимально возможное количество узлов. На этом уровне все узлы "выровнены по левому краю". 
+Это означает, что при поуровневом обходе дерева (обходе в ширину) все внутренние узлы будут встречаться на пути первыми, потом будут идти листья, 
+а пустые потомки (узлы типа nil на самом деле не являются полноценными узлами!) идут последними.  
 
-Particularly, complete binary trees are used as data structures (or addressing schemes) for heaps.
+На практике полные бинарные деревья используются в качестве структур данных (или схем адресации) для куч.  
 
-We can assign an address number to each node in a complete binary tree by enumerating the nodes in levelorder, 
-starting at the root with number 1. 
-In doing so, we realize that for every node X with address A the following property holds: 
-The address of X's left and right successors are 2*A and 2*A+1, respectively, supposed the successors do exist. 
-This fact can be used to elegantly construct a complete binary tree structure. 
-Write a predicate complete_binary_tree/2 with the following specification:
+Мы можем назначить номерной адрес каждому узлу в полном бинарном дереве, поочерёдно перечисляя узлы при поуровневом обходе дерева, 
+начиная с корня со значения 1.     
+Делая так становится очевидно, что для каждого узла X c адресом A будет истинно следующее утверждение: 
+Аддреса левых и правых потомков - 2*A and 2*A+1 соответственно (с условием, что потомки существуют). 
+Этот факт может быть использован для написания элегантного алгоритма построения полного бинарного дерева. 
+Напишите метод complete_binary_tree/2, имеющий следующую спецификацию: 
 
-    % complete_binary_tree(N,T) :- T is a complete binary tree with N nodes. (+,?)
+    % complete_binary_tree(N,T) , где T - полное бинарное дерево, имеющее N узлов. (+,?)
 
-Test your predicate in an appropriate way.
+Как следует протестируйте свой метод.  
 
 **4.13 (\*\*) Layout a binary tree (1)**  
 Given a binary tree as the usual Prolog term t(X,L,R) (or nil). 
