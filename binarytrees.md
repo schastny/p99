@@ -272,7 +272,7 @@
 
 **4.16 (\*\*) Строчное представление бинарных деревьев**  
 Некоторые изображают бинарные деревья как строку следующего типа (смотри пример):
-![alt text](https://github.com/schastny/p99/raw/master/img/p66.gif)
+![alt text](https://github.com/schastny/p99/raw/master/img/p67.gif)
 
     a(b(d,e),c(,f(g,)))
 
