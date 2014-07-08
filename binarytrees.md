@@ -203,7 +203,7 @@
 
 **4.12 (\*\*) Построить полное бинарное дерево**  
 Полное бинарное дерево высоты H определяется следующим образом:  
-Уровни 1,2,3,...,H-1 содержать максимальное количество узлов (то есть 2^(i-1) на уровне i, при этом считать мы считаем с 1 от корня). 
+Уровни 1,2,3,...,H-1 содержат максимальное количество узлов (то есть 2^(i-1) на уровне i, при этом считать мы считаем с 1 от корня). 
 На уровне H допустимо иметь меньше, чем максимально возможное количество узлов. На этом уровне все узлы "выровнены по левому краю". 
 Это означает, что при поуровневом обходе дерева (обходе в ширину) все внутренние узлы будут встречаться на пути первыми, потом будут идти листья, 
 а пустые потомки (узлы типа nil на самом деле не являются полноценными узлами!) идут последними.  
@@ -211,54 +211,65 @@
 На практике полные бинарные деревья используются в качестве структур данных (или схем адресации) для куч.  
 
 Мы можем назначить номерной адрес каждому узлу в полном бинарном дереве, поочерёдно перечисляя узлы при поуровневом обходе дерева, 
-начиная с корня со значения 1.     
+начиная с корня со значения 1.  
+
 Делая так становится очевидно, что для каждого узла X c адресом A будет истинно следующее утверждение: 
-Аддреса левых и правых потомков - 2*A and 2*A+1 соответственно (с условием, что потомки существуют). 
-Этот факт может быть использован для написания элегантного алгоритма построения полного бинарного дерева. 
+Адреса левых и правых потомков - 2*A and 2*A+1 соответственно (с условием, что потомки существуют). 
+Этот факт может быть использован для написания элегантного алгоритма построения полного бинарного дерева.   
+
 Напишите метод complete_binary_tree/2, имеющий следующую спецификацию: 
 
     % complete_binary_tree(N,T) , где T - полное бинарное дерево, имеющее N узлов. (+,?)
 
 Как следует протестируйте свой метод.  
 
-**4.13 (\*\*) Layout a binary tree (1)**  
-Given a binary tree as the usual Prolog term t(X,L,R) (or nil). 
-As a preparation for drawing the tree, a layout algorithm is required to determine the position of each node in a rectangular grid. 
-Several layout methods are conceivable, one of them is shown in the illustration below.
+**4.13 (\*\*) Отрисовка бинарного дерева (1)**  
+Дано бинарное дерево t(X,L,R) (или nil). 
+В подготовительной части алгоритм отрисовки должен определить позицию каждого узла на прямоугольной сетке.  
+Существует несколько методов отрисовки, один из них показан на иллюстрации ниже. 
+![alt text](https://github.com/schastny/p99/raw/master/img/p64.gif)
 
-In this layout strategy, the position of a node v is obtained by the following two rules:
-- x(v) is equal to the position of the node v in the inorder
-- y(v) is equal to the depth of the node v in the tree sequence
+В данном методе, позиция узла v вычисляется по следующим правилам:  
+- x(v) равняется положению узла v inorder в (is equal to the position of the node v in the inorder)
+- y(v) равняется глубине узла v в последовательности дерева (is equal to the depth of the node v in the tree sequence)
 
-In order to store the position of the nodes, we extend the Prolog term representing a node (and its successors) as follows: 
+Для того, чтобы хранить позицию узлов, мы расширим понятие узел следующим образом: 
 
-    % nil represents the empty tree (as usual)
-    % t(W,X,Y,L,R) represents a (non-empty) binary tree with root W "positioned" at (X,Y), and subtrees L and R
+    % nil - пустое дерево (как обычно)
+    % t(W,X,Y,L,R) - непустое бинарное дерево с родительским узлом W, имеющем позицию (X,Y), и поддеревьями L и R
 
-Write a predicate layout_binary_tree/2 with the following specification:
+Напишите метод layout_binary_tree/2 со следующей спецификацией:
 
-    % layout_binary_tree(T,PT) :- PT is the "positioned" binary tree obtained from the binary tree T. (+,?)
+    % layout_binary_tree(T,PT) , где PT - "позиционированное" бинарное дерево, полученное из бинарного дерева T. (+,?)
 
-Test your predicate in an appropriate way.
+Как следует протестируйте свой метод.  
 
-**4.14 (\*\*) Layout a binary tree (2)**  
-An alternative layout method is depicted in the above illustration. 
-Find out the rules and write the corresponding Prolog predicate. 
-Hint: On a given level, the horizontal distance between neighboring nodes is constant.
+**4.14 (\*\*) Отрисовка бинарного дерева (2)**  
+Альтернативный подход к отрисовке изображён на иллюстрации ниже.   
+![alt text](https://github.com/schastny/p99/raw/master/img/p65.gif)
 
-Use the same conventions as in problem 4.13 and test your predicate in an appropriate way.
+Определите правила данной отрисовки и напишите метод, их реализовывающий.   
+Подсказка: Для каждого уровня узлов горизонтальное расстояние между соседними узлами является константой.  
 
-**4.15 (\*\*\*) Layout a binary tree (3)**  
-Yet another layout strategy is shown in the above illustration. 
-The method yields a very compact layout while maintaining a certain symmetry in every node. 
-Find out the rules and write the corresponding Prolog predicate. 
-Hint: Consider the horizontal distance between a node and its successor nodes. 
-How tight can you pack together two subtrees to construct the combined binary tree?
+Используйте те же соглашения, как и в задачах 4.13. 
+Как следует протестируйте свой метод.  
 
-Use the same conventions as in problem 4.13 and 4.14 and test your predicate in an appropriate way. Note: This is a difficult problem. 
-Don't give up too early!
+**4.15 (\*\*\*) Отрисовка бинарного дерева (3)**  
+Ещё один способ отрисовки показан на рисунке ниже.  
+![alt text](https://github.com/schastny/p99/raw/master/img/p66.gif)
 
-Which layout do you like most?
+Данный способ позволяет рисовать дерево очень компактно, при этом удерживая симметрию в каждом узле. 
+Определите правила данной отрисовки и напишите метод, их реализовывающий. 
+Подсказка: Обратите внимание на горизонтальное расстояние между узлом и его потомками.  
+
+Как плотно вы можете уместить два поддерева для отрисовки комбинированного бинарного дерева?  
+
+Используйте те же соглашения, как и в задачах 4.13 и 4.14. 
+Как следует протестируйте свой метод.  
+
+Примечание: Это достаточно сложное задание. Не сдавайтесь слишком рано!  
+
+Какой метод отрисовки вам понравился больше всего?  
 
 **4.16 (\*\*) A string representation of binary trees**  
 Somebody represents binary trees as strings of the following type (see example):
