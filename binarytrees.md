@@ -230,7 +230,7 @@
 ![alt text](https://github.com/schastny/p99/raw/master/img/p64.gif)
 
 В данном методе, позиция узла v вычисляется по следующим правилам:  
-- x(v) равняется положению узла v inorder в (is equal to the position of the node v in the inorder)
+- x(v) равняется порядковому номеру узла v при симметричном обходе (inorder tree traversal, см. [Tree_traversal](http://en.wikipedia.org/wiki/Tree_traversal))
 - y(v) равняется глубине узла v в последовательности дерева (is equal to the depth of the node v in the tree sequence)
 
 Для того, чтобы хранить позицию узлов, мы расширим понятие узел следующим образом: 
@@ -259,11 +259,10 @@
 ![alt text](https://github.com/schastny/p99/raw/master/img/p66.gif)
 
 Данный способ позволяет рисовать дерево очень компактно, при этом удерживая симметрию в каждом узле. 
-Определите правила данной отрисовки и напишите метод, их реализовывающий. 
+Определите правила данной отрисовки и напишите метод, их реализовывающий.  
 Подсказка: Обратите внимание на горизонтальное расстояние между узлом и его потомками.  
 
-Как плотно вы можете уместить два поддерева для отрисовки комбинированного бинарного дерева?  
-
+Как плотно вы можете уместить два поддерева для отрисовки комбинированного бинарного дерева? 
 Используйте те же соглашения, как и в задачах 4.13 и 4.14. 
 Как следует протестируйте свой метод.  
 
@@ -271,43 +270,52 @@
 
 Какой метод отрисовки вам понравился больше всего?  
 
-**4.16 (\*\*) A string representation of binary trees**  
-Somebody represents binary trees as strings of the following type (see example):
+**4.16 (\*\*) Строчное представление бинарных деревьев**  
+Некоторые изображают бинарные деревья как строку следующего типа (смотри пример):
 
     a(b(d,e),c(,f(g,)))
 
-a) Write a Prolog predicate which generates this string representation, if the tree is given as usual (as nil or t(X,L,R) term). 
-Then write a predicate which does this inverse; i.e. given the string representation, construct the tree in the usual form. 
-Finally, combine the two predicates in a single predicate tree_string/2 which can be used in both directions.
+a) Напишите метод, генерирующий строчное представление для дерева, предоставленного в обычном виде (как nil или как t(X,L,R)). 
+Потом напишите метод, который делает обратное действие, то есть для заданного строчного представления строит дерево. 
+В заключение, сведите два метода в один tree_string/2, который можно использовать в обоих направлениях.  
 
-b) Write the same predicate tree_string/2 using difference lists and a single predicate tree_dlist/2 
-which does the conversion between a tree and a difference list in both directions.
+b) 
+Напишите этот же метод (tree_string/2), используя [difference lists](http://en.wikibooks.org/wiki/Prolog/Difference_Lists) и метод tree_dlist/2, 
+который делает преобразование из дерева в difference list и наоборот в обоих направлениях.  
 
-For simplicity, suppose the information in the nodes is a single letter and there are no spaces in the string.
+Для простоты сделайте допущение, что информация в узлах - это единичный символ, и в строчном представлении дерева нет пробелов.  
 
-**4.17 (\*\*) Preorder and inorder sequences of binary trees**  
-We consider binary trees with nodes that are identified by single lower-case letters, as in the example of problem 4.16.
+**4.17 (\*\*) Симметричный (inorder) и в ширину (preorder) обходы бинарных деревьев**  
+Мы рассматриваем бинарные деревья с узлами, которые в качестве значений содержат единичные символы, так же, как и в задаче 4.16.  
 
-a) Write predicates preorder/2 and inorder/2 that construct the preorder and inorder sequence of a given binary tree, respectively. 
-The results should be atoms, e.g. 'abdecfg' for the preorder sequence of the example in problem 4.16.
+a) Напишите методы preorder/2 и inorder/2, 
+которые строят симметричную (inorder) и в ширину (preorder) последовательности обхода для заданного бинарного дерева. 
+Результатом должен быть атом, то есть 'abdecfg' для последовательности обхода в ширину, вычисленной для примера из задачи 4.16.  
 
-b) Can you use preorder/2 from problem part a) in the reverse direction; i.e. given a preorder sequence, construct a corresponding tree? 
-If not, make the necessary arrangements.
+b) Сможете ли вы использовать метод preorder/2 из пункта а) этого задания для выполнения обратного действия? 
+То есть, для заданной последовательности обхода в ширину, построить соответствующее дерево. 
+Обновите метод по необходимости для достижения этой цели.  
 
-c) If both the preorder sequence and the inorder sequence of the nodes of a binary tree are given, then the tree is determined unambiguously. 
-Write a predicate pre_in_tree/3 that does the job.
+c) Если обе последовательности (preorder и inorder) заданы, тогда можно однозначно (недвусмысленно) определить бинарное дерево. 
+Напишите метод pre_in_tree/3 который делает эту работу.  
 
-d) Solve problems a) to c) using difference lists. Cool! Use the predefined predicate time/1 to compare the solutions.
+d) Решите задания a), b) и c) с использованием difference lists. 
+Используйте предопределённый метод time/1 для сравнения результатов.  
 
-What happens if the same character appears in more than one node. 
-Try for instance pre_in_tree(aba,baa,T).
+Что случится, если один и тот же символ возникнет в последовательности больше одного раза? 
+Например, попытайтесь запустить следующий код:
 
-**4.18 (\*\*) Dotstring representation of binary trees**  
-We consider again binary trees with nodes that are identified by single lower-case letters, as in the example of problem 4.16. 
-Such a tree can be represented by the preorder sequence of its nodes 
-in which dots (.) are inserted where an empty subtree (nil) is encountered during the tree traversal. 
-For example, the tree shown in problem 4.16 is represented as 'abd..e..c.fg...'. 
-First, try to establish a syntax (BNF or syntax diagrams) and then write a predicate tree_dotstring/2 
-which does the conversion in both directions. Use difference lists.
+    pre_in_tree(aba,baa,T).
+
+**4.18 (\*\*) Точечное строчное представление бинарных деревьев**  
+Опять мы рассматриваем бинарные деревья с узлами, которые в качестве значений содержат единичные символы, так же, как и в задаче 4.16. 
+Такие деревья могут быть представлены preorder последовательностью обхода узлов, в которой точки (.) будут обозначать пустые поддеревья (nil). 
+Например, дерево из задачи 4.16 можно записать в виде
+ 
+    'abd..e..c.fg...'
+
+В первую очередь попытайтесь определить синтаксис ([BNF](http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form) или [синтаксические диаграммы](http://en.wikipedia.org/wiki/Syntax_diagram)) 
+а потом напишите метод tree_dotstring/2, который будет делать преобразование в обоих направлениях. 
+Используйте difference lists.
 
 [Предыдущая глава](logic.md) | [Оглавление](README.md) | [Следующая глава](multiwaytrees.md)
