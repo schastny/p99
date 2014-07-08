@@ -5,16 +5,38 @@
 где X - родительский узел, L и R - левый и правый наследники. 
 
 ![alt text](https://github.com/schastny/p99/raw/master/img/p67.gif)
-The example tree depicted opposite is therefore represented by the following Prolog term:
+Приведённое на картинке дерево может быть представлено следующей записью:    
 
-    T1 = t(a,t(b,t(d,nil,nil),t(e,nil,nil)),t(c,nil,t(f,t(g,nil,nil),nil)))
+    T1 = 
+        t(
+            a, 
+            t(
+                b, 
+                t(d, nil, nil), 
+                t(e, nil, nil)
+            ), 
+            t(  
+                c, 
+                nil, 
+                t(
+                    f, 
+                    t(g, nil, nil), 
+                    nil
+                )
+            )
+        )
 
-Other examples are a binary tree that consists of a root node only:
+Другой пример - бинарное дерево, состоящее только из родительского узла:  
 
-    T2 = t(a,nil,nil) or an empty binary tree: T3 = nil
+    T2 = t(a,nil,nil) 
 
-**4.01 (\*) Check whether a given term represents a binary tree**  
-Write a predicate istree/1 which succeeds if and only if its argument is a Prolog term representing a binary tree.  
+или пустое дерево:
+
+    T3 = nil
+
+**4.01 (\*) 
+Проверить, является ли данный объект бинарным деревом**  
+Напишите предикат istree/1, который возвращает true только в том случае, если его аргумент - это бинарное дерево.  
 Пример:
 
     ?- istree(t(a,t(b,nil,nil),nil)).
@@ -22,13 +44,14 @@ Write a predicate istree/1 which succeeds if and only if its argument is a Prolo
     ?- istree(t(a,t(b,nil,nil))).
     No
 
-**4.02 (\*\*) Construct completely balanced binary trees**  
-In a completely balanced binary tree, the following property holds for every node: 
-The number of nodes in its left subtree and the number of nodes in its right subtree are almost equal, 
-which means their difference is not greater than one.
+**4.02 (\*\*) Построить сбалансированное двоичное дерево**  
+В полностью сбалансированном двоичном дереве для всех узлов выполняется следующее условие:  
+Количество узлов в левом и правом поддеревьях практически одинаково, 
+что значит, их разница не может быть больше одного.  
 
-Write a predicate cbal_tree/2 to construct completely balanced binary trees for a given number of nodes. 
-The predicate should generate all solutions via backtracking. Put the letter 'x' as information into all nodes of the tree.  
+Напишите метод cbal_tree/2 для построения полностью сбалансированного дерева с заданным количеством узлов. 
+Метод должен возвращать все возможные варианты построения. 
+Поместите символ 'x' в качестве значения во все узлы дерева.    
 Пример:
 
     ?- cbal_tree(4,T).
@@ -36,22 +59,37 @@ The predicate should generate all solutions via backtracking. Put the letter 'x'
     T = t(x, t(x, nil, nil), t(x, t(x, nil, nil), nil)) ;
     etc......No
 
-**4.03 (\*\*) Symmetric binary trees**  
-Let us call a binary tree symmetric if you can draw a vertical line through the root node 
-and then the right subtree is the mirror image of the left subtree. 
-Write a predicate symmetric/1 to check whether a given binary tree is symmetric. 
-Hint: Write a predicate mirror/2 first to check whether one tree is the mirror image of another. 
-We are only interested in the structure, not in the contents of the nodes.
+**4.03 (\*\*) Симметричные бинарные деревья**  
+Будем называть бинарное дерево симметричным, если вы можете провести вертикальную линию через родительский узел, 
+и правое поддерево будет зеркальным отражением левого поддерева. 
 
-**4.04 (\*\*) Binary search trees (dictionaries)**  
-Use the predicate add/3, developed in chapter 4 of the course, 
-to write a predicate to construct a binary search tree from a list of integer numbers.  
+Напишите предикат symmetric/1 для проверки, является ли данное бинарное дерево симметричным. 
+
+Подсказка: Сначала напишите предикат mirror/2 для проверки, является ли одно дерево зеркальным отображением другого. 
+В данной задаче нас интересует только структура, а не содержимое узлов.  
+
+**4.04 (\*\*) Двоичные деревья поиска (словари)**  
+Используйте метод add/3, разработанный в главе 4 данного курса (имеется ввиду курс по Прологу, к которому прилагался данный задачник), 
+для написания метода, строящего двоичное дерево поиска из списка целых чисел.  
 Пример:
 
     ?- construct([3,2,5,7,1],T).
-    T = t(3, t(2, t(1, nil, nil), nil), t(5, nil, t(7, nil, nil)))
+    T = 
+        t(
+            3, 
+            t(
+                2, 
+                t(1, nil, nil), 
+                nil
+            ), 
+            t(
+                5, 
+                nil, 
+                t(7, nil, nil)
+            )
+        )
 
-Then use this predicate to test the solution of the problem P56.  
+После этого используйте разработанный метод для проверки решения задачи P56.  
 Пример:
 
     ?- test_symmetric([5,3,18,1,4,12,21]).
@@ -59,8 +97,9 @@ Then use this predicate to test the solution of the problem P56.
     ?- test_symmetric([3,2,5,7,4]).
     No
 
-**4.05 (\*\*) Generate-and-test paradigm**  
-Apply the generate-and-test paradigm to construct all symmetric, completely balanced binary trees with a given number of nodes.  
+**4.05 (\*\*) Подход Generate-and-test (сгенерируй и проверь)**  
+Примените generate-and-test (сгенерируй и проверь) подход 
+для построения всех симметричных, полностью сбалансированных деревьев с заданным количеством узлов.  
 Пример:
 
     ?- sym_cbal_trees(5,Ts).
@@ -94,12 +133,12 @@ Apply the generate-and-test paradigm to construct all symmetric, completely bala
             )
         ]
 
-How many such trees are there with 57 nodes? 
-Investigate about how many solutions there are for a given number of nodes? 
-What if the number is even? 
-Write an appropriate predicate.
+Сколько таких деревьев будет для количества узлов 57? 
+Исследуйте, сколько различных решений будет для заданного количества узлов. 
+Что если количество чётное? 
+Напишите метод sym_cbal_trees. 
 
-**4.06 (\*\*) Construct height-balanced binary trees**  
+**4.06 (\*\*) Постройте сбалансированное по высоте двоичное дерево (АВЛ-дерево)**  
 In a height-balanced binary tree, the following property holds for every node: 
 The height of its left subtree and the height of its right subtree are almost equal, which means their difference is not greater than one.
 
