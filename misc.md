@@ -20,8 +20,9 @@ And finally, represent the solution of our problem as a list of N*N knight posit
 
 **7.03 (\*\*\*) Von Koch's conjecture**  
 Several years ago I met a mathematician who was intrigued by a problem for which he didn't know a solution. 
-His name was Von Koch, and I don't know whether the problem has been solved since.
+His name was Von Koch, and I don't know whether the problem has been solved since.  
 
+![alt text](https://github.com/schastny/p99/raw/master/img/p92a.gif)
 Anyway, the puzzle goes like this: Given a tree with N nodes (and hence N-1 edges). 
 Find a way to enumerate the nodes from 1 to N and, accordingly, the edges from 1 to N-1 in such a way, 
 that for each edge K the difference of its node numbers equals to K. 
@@ -31,6 +32,7 @@ For small trees the problem is easy to solve by hand.
 However, for larger trees, and 14 is already very large, it is extremely difficult to find a solution. 
 And remember, we don't know for sure whether there is always a solution!
 
+![alt text](https://github.com/schastny/p99/raw/master/img/p92b.gif)  
 Write a predicate that calculates a numbering scheme for a given tree. 
 What is the solution for the larger tree pictured above?
 
@@ -45,6 +47,7 @@ Example: 175 must be written as one-seven-five.
 Write a predicate full_words/1 to print (non-negative) integer numbers in full words.
 
 **7.06 (\*\*) Syntax checker**  
+![alt text](https://github.com/schastny/p99/raw/master/img/p96.gif)
 In a certain programming language (Ada) identifiers are defined by the syntax diagram (railroad chart) opposite. 
 Transform the syntax diagram into a system of syntax diagrams which do not contain loops; i.e. which are purely recursive. 
 Using these modified diagrams, write a predicate identifier/1 that can check whether or not a given string is a legal identifier.
@@ -111,7 +114,8 @@ Published puzzles are larger than this example, e.g. 25 x 20, and apparently alw
 
 **7.09 (\*\*\*) Crossword puzzle**  
 Given an empty (or almost empty) framework of a crossword puzzle and a set of words. 
-The problem is to place the words into the framework.
+The problem is to place the words into the framework.  
+![alt text](https://github.com/schastny/p99/raw/master/img/p99.gif)
 
 The particular crossword puzzle is specified in a text file which first lists the words (one word per line) in an arbitrary order. 
 Then, after an empty line, the crossword framework is defined. 
