@@ -1,47 +1,72 @@
 ##N-арные деревья (Multiway Trees)
 
 ![alt text](https://github.com/schastny/p99/raw/master/img/p70.gif)
-A multiway tree is composed of a root element and a (possibly empty) set of successors which are multiway trees themselves. 
-A multiway tree is never empty. The set of successor trees is sometimes called a forest.
+N-арное дерево состоит из узлового элемента и (возможно) набора потомков, которые в свою очередь также являются N-арными деревьями. 
+N-арное дерево никогда не может быть пустым. Набор потомков часто называют лесом.  
 
-In Prolog we represent a multiway tree by a term t(X,F), 
-where X denotes the root node and F denotes the forest of successor trees (a Prolog list). 
-The example tree depicted opposite is therefore represented by the following Prolog term:
+В Прологе N-арное дерево записывают термином t(X,F), 
+где X - узловой элемент, а F - лес потомков (список в Прологе).  
+Приведённое на картинке дерево может быть представлено следующей записью:  
 
-    T = t(a,[t(f,[t(g,[])]),t(c,[]),t(b,[t(d,[]),t(e,[])])])
+    T = 
+        t(
+            a, 
+            [
+                t(
+                    f, 
+                    [
+                        t(g, [])
+                    ]
+                ), 
+                t(  c, 
+                    []
+                ), 
+                t(
+                    b, 
+                    [
+                        t(d, []), 
+                        t(e, [])
+                    ]
+                )
+            ]
+        )
 
-**5.01 (\*) Check whether a given term represents a multiway tree**  
-Write a predicate istree/1 which succeeds if and only if its argument is a Prolog term representing a multiway tree.  
+**5.01 (\*) Проверить, является ли данный объект N-арным деревом**  
+Напишите предикат istree/1, который возвращает true только в том случае, если его аргумент - это N-арное дерево.  
 Пример:
 
     ?- istree(t(a,[t(f,[t(g,[])]),t(c,[]),t(b,[t(d,[]),t(e,[])])])).
     Yes
 
-**5.02 (\*) Count the nodes of a multiway tree**  
-Write a predicate nnodes/1 which counts the nodes of a given multiway tree.  
+**5.02 (\*) Посчитать количество узлов N-арного дерева**  
+Напишите метод nnodes/1 для подсчёта узлов N-арного дерева.  
 Пример:
 
     ?- nnodes(t(a,[t(f,[])]),N).
     N = 2
 
-Write another version of the predicate that allows for a flow pattern (o,i).
+Напишите ещё одну версию метода, который позволял бы реализовать flow pattern (o,i) 
+(Write another version of the predicate that allows for a flow pattern (o,i)).
 
-**5.03 (\*\*) Tree construction from a node string**  
+**5.03 (\*\*) Построение дерева из строки**  
 ![alt text](https://github.com/schastny/p99/raw/master/img/p70.gif)
-We suppose that the nodes of a multiway tree contain single characters. 
-In the depth-first order sequence of its nodes, a special character ^ has been inserted whenever, 
-during the tree traversal, the move is a backtrack to the previous level.
+Мы предполагаем, что узлы N-арного дерева содержат в качестве значения единичные символы. 
+В посделовательности, полученной при обходе дерева в глубину (depth-first), используется специальный символ ^, 
+который обозначает переход предыдущий уровень при обходе.  
 
-By this rule, the tree in the figure opposite is represented as: afg^^c^bd^e^^^
+Следуя этим правилам, дерево, изображённое на картинке, может быть представлено как строка: 
 
-Define the syntax of the string and write a predicate tree(String,Tree) to construct the Tree when the String is given. 
-Work with atoms (instead of strings). Make your predicate work in both directions.
+    afg^^c^bd^e^^^
 
-**5.04 (\*) Determine the internal path length of a tree**  
-We define the internal path length of a multiway tree as the total sum of the path lengths from the root to all nodes of the tree. 
-By this definition, the tree in the figure of problem 5.03 has an internal path length of 9.
+Определите синтаксис строки и напишите метод tree(String,Tree) для построения дерева по заданной строке. 
+Сделайте так, чтобы ваш метод смог работать в обоих направлениях.  
 
-Write a predicate ipl(Tree,IPL) for the flow pattern (+,-).
+**5.04 (\*) Опередлить длину внутренних путей дерева**  
+Длиной внутренних путей N-арного дерева назовём общую длину всех путей от узлового элемента до узлов дерева. 
+По этому определению, дерево с диаграммы к задаче 5.03 имеет длину внутренних путей, равную 9.  
+
+Напишите метод ipl(Tree,IPL) для подсчёта длины внутренних путей (+,-).  
+(Write a predicate ipl(Tree,IPL) for the flow pattern (+,-))
 
 **5.05 (\*) Construct the bottom-up order sequence of the tree nodes**  
 Write a predicate bottom_up(Tree,Seq) which constructs the bottom-up sequence of the nodes of the multiway tree Tree. 
