@@ -68,33 +68,37 @@ N-арное дерево никогда не может быть пустым. 
 Напишите метод ipl(Tree,IPL) для подсчёта длины внутренних путей (+,-).  
 (Write a predicate ipl(Tree,IPL) for the flow pattern (+,-))
 
-**5.05 (\*) Construct the bottom-up order sequence of the tree nodes**  
-Write a predicate bottom_up(Tree,Seq) which constructs the bottom-up sequence of the nodes of the multiway tree Tree. 
-Seq should be a Prolog list.
+**5.05 (\*) Построить последовательность обхода в глубину (bottom-up postorder) узлов дерева**  
+Напишите метод bottom_up(Tree,Seq), строящий последовательность обхода узлоов в глубину для заданного N-арного дерева Tree. 
+Результат Seq должен быть списком.  
 
-What happens if you run your predicate backwords?
+Что случится, если вы запустите ваш метод задом наперёд? 
 
 **5.06 (\*\*) Lisp-like tree representation**  
-There is a particular notation for multiway trees in Lisp. 
-Lisp is a prominent functional programming language, which is used primarily for artificial intelligence problems. 
-As such it is one of the main competitors of Prolog. 
-In Lisp almost everything is a list, just as in Prolog everything is a term.
+В Лиспе есть определённая нотация для N-арных деревьев. 
+Лисп - это выдающийся функциональный язык, который преимущественно используется для задач, связнных с искусственным интеллектом. 
+Так что он является одним из главных конкурентов Пролога. 
+В Лиспе практически всё является списком, так же, как в Прологе всё есть термин (term).  
 
-The following pictures show how multiway tree structures are represented in Lisp.  
+Следующая картинка иллюстрирует, как N-арные деревья представленны в Лиспе.  
 ![alt text](https://github.com/schastny/p99/raw/master/img/p73.png)  
 
-Note that in the "lispy" notation a node with successors (children) in the tree is always the first element in a list, followed by its children. 
-The "lispy" representation of a multiway tree is a sequence of atoms and parentheses '(' and ')', which we shall collectively call "tokens". 
-We can represent this sequence of tokens as a Prolog list; 
-e.g. the lispy expression (a (b c)) could be represented as the Prolog list ['(', a, '(', b, c, ')', ')']. 
-Write a predicate tree_ltl(T,LTL) which constructs the "lispy token list" LTL if the tree is given as term T in the usual Prolog notation.  
-
+Отметьте, что в лисповой нотации узел с потомками всегда является первым элементом списка, за которым идут его дети. 
+Лисповое представление N-арных деревьев - это последовательность элементов и скобок (открывающих и закрывающих), 
+которые мы в целом будем называть *токенами*. 
+Мы можем эту последовательность токенов представить как список в Прологе. 
+Например, запись на Лиспе (a (b c)) может быть представлена на Прологе следующим списком:  
+ 
+    ['(', a, '(', b, c, ')', ')']
+     
+Напишите метод tree_ltl(T,LTL), который будет строить лисповую запись дерева LTL для дерева T, заданного в стандартной для Пролога нотации.  
 Пример:
 
     ?- tree_ltl(t(a,[t(b,[]),t(c,[])]),LTL).
     LTL = ['(', a, '(', b, c, ')', ')']
 
-As a second, even more interesting exercise try to rewrite tree_ltl/2 in a way that the inverse conversion is also possible: 
-Given the list LTL, construct the Prolog tree T. Use difference lists.
+Второе задание будет интереснее. Попытайтесь переписать метод tree_ltl/2 таким образом, чтобы была возможность делать обратное преобразование: 
+Для заданного списка LTL в лисповой нотации, постройте дерево T, записанное в стандартной для Пролога нотации. 
+Используйте difference lists.
 
 [Предыдущая глава](binarytrees.md) | [Оглавление](README.md) | [Следующая глава](graphs.md)
