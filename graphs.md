@@ -1,48 +1,59 @@
 ##Графы
 
-**A preliminary remark: The vocabulary in graph theory varies considerably. 
-Some authors use the same word with different meanings. Some authors use different words to mean the same thing. 
-I hope that our definitions are free of contradictions.**
+**Предварительное замечание: Словарь понятий в теории графов не всегда постоянен. 
+Некоторые авторы используют одинаковые слова для описания различных понятий. Иногда же разные слова объясняют один и тот же термин.  
+Я надеюсь, что наши определения свободны от противоречивых толкований.**  
 
-*A graph is defined as a set of nodes and a set of edges, where each edge is a pair of nodes.*
+**Граф определяется как совокупность множества вершин (узлов) и рёбер (связей между вершинами).**  
 
 ![alt text](https://github.com/schastny/p99/raw/master/img/graph1.gif)  
-There are several ways to represent graphs in Prolog.
+Существует несколько способов представления графов в Прологе. 
 
-One method is to represent each edge separately as one clause (fact). In this form, the graph depicted opposite is represented 
-as the following predicate:
+Один из методов - представлять каждую вершину отдельно как одно целевое утверждение (факт). 
+Таким образом граф, представленный выше может быть записан как следующий предикат:
 
     edge(h,g).
     edge(k,f).
     edge(f,b).    
     ...
 
-We call this edge-clause form.
+Мы называем такую запись *edge-clause form*. 
+Очевидно, что таким образом невозможно записать изолированные вершины.  
 
-Obviously, isolated nodes cannot be represented. Another method is to represent the whole graph as one data object. 
-According to the definition of the graph as a pair of two sets (nodes and edges), 
-we may use the following Prolog term to represent the above example graph:
+Другой метод - записывать весь граф как один объект. 
+Исходя из определения графа как двух наборов (вершин и рёбер), 
+мы можем использовать следующую запись на Пролог (показано для графа, приведённого на изображении):
 
-    graph([b,c,d,f,g,h,k],[e(b,c),e(b,f),e(c,f),e(f,k),e(g,h)])
+    graph(
+        [b, c, d, f, g, h, k], 
+        [e(b, c), e(b, f), e(c, f), e(f, k), e(g, h)]
+    )
 
-We call this graph-term form. Note, that the lists are kept sorted, they are really sets, without duplicated elements. 
-Each edge appears only once in the edge list; 
-i.e. an edge from a node x to another node y is represented as e(x,y), the term e(y,x) is not present. 
-The graph-term form is our default representation. 
-In SWI-Prolog there are predefined predicates to work with sets.
+Мы называем такую запись *graph-term form*. 
+Отметьте, что списки хранятся в отсортированном виде, и на самом деле это наборы (Sets), без повторяющихся элементов. 
+Каждое ребро появляется в списке ребёр только один раз. То есть, ребро из вершины x до вершины y представлено записью e(x,y), 
+а записи e(y,x) в списке нету.   
+Запись вида graph-term будет нашей формой представления графа по умолчанию. 
+В SWI-Prolog (реализация языка Пролог) есть предопределённые предикаты для работы с наборами.  
 
-A third representation method is to associate with each node the set of nodes that are adjacent to that node. 
-We call this the adjacency-list form. 
-In our example:
+Третий вид представления - ассоциировать с каждой вершиной набор примыкающих вершин. 
+Мы называем такую запись *adjacency-list form*. 
+Запись для примера выше:
 
-    [n(b,[c,f]), n(c,[b,f]), n(d,[]), n(f,[b,c,k]), ...]
+    [
+        n(b,[c,f]), 
+        n(c,[b,f]), 
+        n(d,[]), 
+        n(f,[b,c,k]), 
+        ...
+    ]
 
-The representations we introduced so far are Prolog terms and therefore well suited for automated processing, 
-but their syntax is not very user-friendly. 
-Typing the terms by hand is cumbersome and error-prone. 
-We can define a more compact and "human-friendly" notation as follows: 
-A graph is represented by a list of atoms and terms of the type X-Y (i.e. functor '-' and arity 2). 
-The atoms stand for isolated nodes, the X-Y terms describe edges. 
+Приведённые методы представления являются валидными записями на Пролог и поэтому хорошо подходят для автоматической обработки,
+но при этом их синтаксис не очень читабельный для пользователя. 
+Набирать записи в таком формате для пользователя будет достаточно трудно и можно допустить ошибку. 
+Мы можем определить более компактную и понятную для человека запись:   
+Граф будет записываться как список атомов и терминов типа X-Y (то есть фукнтор '-' с арностью 2)
+Атомы будут обозначать изолированные вершины, а термин X-Y - описывать рёбра. 
 If an X appears as an endpoint of an edge, it is automatically defined as a node. 
 Our example could be written as:
 
