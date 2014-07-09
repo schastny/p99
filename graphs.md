@@ -1,11 +1,12 @@
 ##Графы
 
-A preliminary remark: The vocabulary in graph theory varies considerably. 
+**A preliminary remark: The vocabulary in graph theory varies considerably. 
 Some authors use the same word with different meanings. Some authors use different words to mean the same thing. 
-I hope that our definitions are free of contradictions.
+I hope that our definitions are free of contradictions.**
 
-A graph is defined as a set of nodes and a set of edges, where each edge is a pair of nodes.
+*A graph is defined as a set of nodes and a set of edges, where each edge is a pair of nodes.*
 
+![alt text](https://github.com/schastny/p99/raw/master/img/graph1.gif)  
 There are several ways to represent graphs in Prolog.
 
 One method is to represent each edge separately as one clause (fact). In this form, the graph depicted opposite is represented 
@@ -53,6 +54,7 @@ Notice the isolated node d.
 (Actually, isolated nodes do not even have to be atoms in the Prolog sense, they can be compound terms, 
 as in d(3.75,blue) instead of d in the example).
 
+![alt text](https://github.com/schastny/p99/raw/master/img/graph2.gif)  
 When the edges are directed we call them arcs. These are represented by ordered pairs. 
 Such a graph is called directed graph (or digraph, for short). 
 To represent a directed graph, the forms discussed above are slightly modified. 
@@ -70,6 +72,7 @@ Adjacency-list form
 Human-friendly form
     [s > r, t, u > r, s > u, u > s, v > u] 
 
+![alt text](https://github.com/schastny/p99/raw/master/img/graph3.gif)  
 Finally, graphs and digraphs may have additional information attached to nodes and edges (arcs). 
 For the nodes, this is no problem, as we can easily replace the single character identifiers with arbitrary compound terms, 
 such as city('London',4711). On the other hand, for edges we have to extend our notation. 
@@ -105,6 +108,7 @@ Write a predicate cycle(G,A,P) to find a closed path (cycle) P starting at a giv
 The predicate should return all cycles via backtracking.
 
 **6.04 (\*\*) Construct all spanning trees**  
+![alt text](https://github.com/schastny/p99/raw/master/img/p83.gif)
 Write a predicate s_tree(Graph,Tree) to construct (by backtracking) all spanning trees of a given graph. 
 With this predicate, find out how many spanning trees there are for the graph depicted to the left. 
 The data of this example graph can be found in the file p6_04.dat. 
@@ -112,6 +116,7 @@ When you have a correct solution for the s_tree/2 predicate, use it to define tw
 Both are five-minutes tasks!
 
 **6.05 (\*\*) Construct the minimal spanning tree**  
+![alt text](https://github.com/schastny/p99/raw/master/img/p84.gif)
 Write a predicate ms_tree(Graph,Tree,Sum) to construct the minimal spanning tree of a given labelled graph. 
 Подсказка: Use the algorithm of Prim. A small modification of the solution of 6.04 does the trick. 
 The data of the example graph to the right can be found in the file p6_05.dat.
