@@ -132,49 +132,53 @@
 
 **6.04 (\*\*) Построить все каркасные (остовные) деревья**  
 ![alt text](https://github.com/schastny/p99/raw/master/img/p83.gif)
-*Каркасное дерево* [Spanning tree](http://en.wikipedia.org/wiki/Spanning_tree) состоит из некоторого подмножества рёбер графа, 
+*Каркасное дерево* ([ыpanning tree](http://en.wikipedia.org/wiki/Spanning_tree)) состоит из некоторого подмножества рёбер графа, 
 таких, что из любой вершины графа можно попасть в любую другую вершину, двигаясь по этим рёбрам, и в нём нет циклов.  
 
 Напишите метод s_tree(Graph,Tree) для построения всех возможных каркасных деревьев для заданного графа.
 Используя данный метод, определите, сколько каркасных деревьев существует у графа, приведённого слева на картинке.
-Строчное представление к данному графу находится в файле [p6_04.dat](https://github.com/schastny/p99/raw/master/files/p6_04.dat) 
+Строчное представление к данному графу находится в файле [p6_04.dat](https://github.com/schastny/p99/raw/master/files/p6_04.dat). 
 Когда у вас будет корректная реализация s_tree/2, используйте её для определения двух других полезных методов: 
 is_tree(Graph) и is_connected(Graph). 
 Оба метода не должны занять у вас много времени!
 
-**6.05 (\*\*) Construct the minimal spanning tree**  
+**6.05 (\*\*) Построить наименьшее каркасное дерево**  
 ![alt text](https://github.com/schastny/p99/raw/master/img/p84.gif)
-Write a predicate ms_tree(Graph,Tree,Sum) to construct the minimal spanning tree of a given labelled graph. 
-Подсказка: Use the algorithm of Prim. A small modification of the solution of 6.04 does the trick. 
-The data of the example graph to the right can be found in the file p6_05.dat.
+Напишите метод ms_tree(Graph,Tree,Sum) для поиска наименьшего карскасного дерево для заданного помеченного графа. 
+Подсказка: Используйте алгоритм Прима ([Prim's algorithm](http://en.wikipedia.org/wiki/Prim%27s_algorithm)). 
+Вам нужно будет всего лишь немного модифицировать решение к задаче 6.04. 
+Строчное представление к аднному графу находится в файле [p6_05.dat](https://github.com/schastny/p99/raw/master/files/p6_05.dat).
 
-**6.06 (\*\*) Graph isomorphism**  
-Two graphs G1(N1,E1) and G2(N2,E2) are isomorphic if there is a bijection f: N1 -> N2 such that 
-for any nodes X,Y of N1, X and Y are adjacent if and only if f(X) and f(Y) are adjacent.
+**6.06 (\*\*) Изоморфизм графов**  
+Два графа G1(N1,E1) и G2(N2,E2) являются изоморфными если существует биекция
+ 
+    f: N1 -> N2,
 
-Write a predicate that determines whether two graphs are isomorphic. 
-Подсказка: Use an open-ended list to represent the function f. 
+такая, что для любых вершин X,Y из N1 являются смежными только если f(X) and f(Y) также являются смежными.
+Напишите предикат, который определяет, являются ли два графа изоморфными.
+Подсказка: Используйте open-ended list для описания функции f. 
 
-**6.07 (\*\*) Node degree and graph coloration**  
-a) Write a predicate degree(Graph,Node,Deg) that determines the degree of a given node.
-b) Write a predicate that generates a list of all nodes of a graph sorted according to decreasing degree.
-c) Use Welch-Powell's algorithm to paint the nodes of a graph in such a way that adjacent nodes have different colors.
+**6.07 (\*\*) Степерь вершины графа раскраска графа**  
+a) Напишите метод degree(Graph,Node,Deg) для определения степени заданной вершины. 
+b) Напишите предикат, возвращающий список всех вершин графа в отсортированном по степени вершины виде. 
+c) Используйте алгоритм жадной расскраски (так же иногда называемый Welch-Powell's algorithm) 
+для раскраски вершин графа такм образом, чтобы смежные вершины всегда имели разные цвета.  
 
-**6.08 (\*\*) Depth-first order graph traversal**  
-Write a predicate that generates a depth-first order graph traversal sequence. 
-The starting point should be specified, and the output should be a list of nodes 
-that are reachable from this starting point (in depth-first order).
+**6.08 (\*\*) Обход графа в глубину**  
+Напишите метод, который выводит последовательность обхода вершин графа в глубину. 
+Стартовая позиция должна быть указана, а в качестве результата должен быть список вершин, 
+упорядоченных по мере доступности от начальной позиции.
 
-**6.09 (\*\*) Connected components**  
-Write a predicate that splits a graph into its connected components.
+**6.09 (\*\*) Компоненты связности**  
+Напишите метод, разбивающий граф на компоненты связности.  
 
-**6.10 (\*\*) Bipartite graphs**  
-Write a predicate that finds out whether a given graph is bipartite.
+**6.10 (\*\*) Биграфы (двудольные графы)**  
+Напишите предикат, определяющий, является ли заданный граф двудольным ([bipartite graphs](en.wikipedia.org/wiki/Bipartite_graph)).
      
-**6.11 (\*\*\*) Generate K-regular simple graphs with N nodes**  
-In a K-regular graph all nodes have a degree of K; i.e. the number of edges incident in each node is K. 
-How many (non-isomorphic!) 3-regular graphs with 6 nodes are there?
+**6.11 (\*\*\*) Сгенерировать регулярный граф степени K, имеиющий N вершин**  
+В регулярном графе степени K (K-regular simple graph) все вершины имеют степень K, то есть количество соседей у каждой вершины постоянное - K.
+Сколько существует регулярных графов третьей степени, имеющих 6 вершин?   
 
-See also the table of results in p6_11.txt. 
+Смотри также таблицу результатов в [p6_11.txt](https://github.com/schastny/p99/raw/master/files/p6_11.txt). 
 
 [Предыдущая глава](multiwaytrees.md) | [Оглавление](README.md) | [Следующая глава](misc.md)
