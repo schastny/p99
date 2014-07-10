@@ -1,22 +1,27 @@
 ##Разное
 
-**7.01 (\*\*) Eight queens problem**  
-This is a classical problem in computer science. 
-The objective is to place eight queens on a chessboard so that no two queens are attacking each other; 
-i.e., no two queens are in the same row, the same column, or on the same diagonal.
+**7.01 (\*\*) Задача о восьми ферзях (Eight queens problem)**  
+Это классическая задача в информатике. 
+Ваше задание - расставить на стандартной 64-клеточной шахматной доске 8 ферзей так, чтобы ни один из них не находился под боем другого, 
+то есть - никакие два ферзя не находятся в том же ряду, то же колонке, или на той же диагонали.  
 
-Hint: Represent the positions of the queens as a list of numbers 1..N. 
-Example: [4,2,7,3,6,8,5,1] means that the queen in the first column is in row 4, the queen in the second column is in row 2, etc. 
-Use the generate-and-test paradigm.
+Подсказка: Представляйте позиции ферзей как список чисел из диапазона 1..N. 
+Например, запись 
 
-**7.02 (\*\*) Knight's tour**  
-Another famous problem is this one: 
-How can a knight jump on an NxN chessboard in such a way that it visits every square exactly once?
+    [4,2,7,3,6,8,5,1] 
+    
+обозначает, что ферзь в первом ряду стоит в 4 клетке, ферзь во втором ряду стоит во 2 клетке, и т.д. 
+Используйте подход сгенерируй и проверь (generate-and-test). 
 
-Hints: Represent the squares by pairs of their coordinates of the form X/Y, where both X and Y are integers between 1 and N. 
-(Note that '/' is just a convenient functor, not division!) 
-Define the relation jump(N,X/Y,U/V) to express the fact that a knight can jump from X/Y to U/V on a NxN chessboard. 
-And finally, represent the solution of our problem as a list of N*N knight positions (the knight's tour).
+**7.02 (\*\*) Задача о ходе коня (Knight's tour)**  
+Это ещё одна известная задача: 
+о нахождении маршрута шахматного коня, проходящего через все поля доски размером NxN по одному разу.
+
+Подсказки: 
+Записывайте поля шахматной доски как пара координат в форме X/Y, где X и Y являются числами в диапазоне 1..N. 
+(Отметьте, что знак '/' здесь обозначает функтор, а не знак деления!) 
+Определите отношение jump(N,X/Y,U/V) для выражения факта, что конь может прыгнуть из поля X/Y в поле U/V 
+на шахматной доске размером NxN. И наконец, представьте решение задачи в виде списка позиций.
 
 **7.03 (\*\*\*) Von Koch's conjecture**  
 Several years ago I met a mathematician who was intrigued by a problem for which he didn't know a solution. 
