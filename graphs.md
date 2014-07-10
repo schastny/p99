@@ -53,33 +53,40 @@
 Мы можем определить более компактную и понятную для человека запись:   
 Граф будет записываться как список атомов и терминов типа X-Y (то есть фукнтор '-' с арностью 2)
 Атомы будут обозначать изолированные вершины, а термин X-Y - описывать рёбра. 
-If an X appears as an endpoint of an edge, it is automatically defined as a node. 
-Our example could be written as:
+Если выясняется, что X - конец ребра, то он автоматически определяется, как вершина. 
+Наш пример выше может быть описан следующим образом:  
 
     [b-c, f-c, g-h, d, f-b, k-f, h-g]
 
-We call this the human-friendly form. 
-As the example shows, the list does not have to be sorted and may even contain the same edge multiple times. 
-Notice the isolated node d. 
-(Actually, isolated nodes do not even have to be atoms in the Prolog sense, they can be compound terms, 
-as in d(3.75,blue) instead of d in the example).
+Мы будем называть такую запись **human-friendly form**. 
+Как показано на примере, список не обязательно должен быть отсортирован и даже может содержать одно и то же ребро несколько раз. 
+Отметьте также изолированную вершину d. 
+(Вообще-то, изолированные вершины могут быть и не атомами в Прологе, а например составными терминами: d(3.75,blue) вместо простого d).
 
 ![alt text](https://github.com/schastny/p99/raw/master/img/graph2.gif)  
-When the edges are directed we call them arcs. These are represented by ordered pairs. 
-Such a graph is called directed graph (or digraph, for short). 
-To represent a directed graph, the forms discussed above are slightly modified. 
-The example graph opposite is represented as follows:
+Если рёбра имеют направление, то из называют дугами. 
+Дуга — это ориентированное ребро. Дуги записываются в виде упорядоченных пар. 
+А сам граф — ориентированный (directed graph, digraph). 
+Для записи ориентированных графов форма записи немного меняется. 
+Например, граф, изображённый на картинке, записывается следующим образом:  
 
-Arc-clause form
+*Arc-clause form*
+
     arc(s,u).
     arc(u,r).
     ...
-Graph-term form
+    
+*Graph-term form*
+
     digraph([r,s,t,u,v],[a(s,r),a(s,u),a(u,r),a(u,s),a(v,u)])
-Adjacency-list form
+
+*Adjacency-list form*
+
     [n(r,[]),n(s,[r,u]),n(t,[]),n(u,[r]),n(v,[u])]
-    Note that the adjacency-list does not have the information on whether it is a graph or a digraph.
-Human-friendly form
+Отметьте, что в данной записи не будет информации, является ли этот граф простым или ориентированным.
+
+*Human-friendly form*
+
     [s > r, t, u > r, s > u, u > s, v > u] 
 
 ![alt text](https://github.com/schastny/p99/raw/master/img/graph3.gif)  
