@@ -117,27 +117,30 @@
 Нотация для помеченных графов так же может использоваться для так называемых мультиграфов ([multigraph](http://en.wikipedia.org/wiki/Multigraph)), 
 в которых разрешено иметь более одного ребра (дуги) между двумя вершинами.  
 
-**6.01 (\*\*\*) Conversions**  
-Write predicates to convert between the different graph representations. 
-With these predicates, all representations are equivalent; i.e. for the following problems you can always freely pick the most convenient form. 
-The reason this problem is rated (\*\*\*) is not because it's particularly difficult, 
-but because it's a lot of work to deal with all the special cases.
+**6.01 (\*\*\*) Преобразования**  
+Напишите методы для преобразования между различными представлениями графов. 
+Эта задача помечена тремя звёздами не ввиду своей сложности, 
+а потому что здесь много работы по написанию методов для всех форм представления. 
 
-**6.02 (\*\*) Path from one node to another one**  
-Write a predicate path(G,A,B,P) to find an acyclic path P from node A to node B in the graph G. 
-The predicate should return all paths via backtracking.
+**6.02 (\*\*) Путь от одной вершины к другой**  
+Напишите метод path(G,A,B,P) для поиска ациклического пути P из вершины A в вершину B в графе G. 
+Метод должен возвращать все возможные пути.
 
 **6.03 (\*) Cycle from a given node**  
-Write a predicate cycle(G,A,P) to find a closed path (cycle) P starting at a given node A in the graph G. 
-The predicate should return all cycles via backtracking.
+Напишите метод cycle(G,A,P) для поиса замкнутого пути (цикла), начинающегося в заданной вершине A в графе G. 
+Метод должен возвращать все возможные варианты решения.
 
-**6.04 (\*\*) Construct all spanning trees**  
+**6.04 (\*\*) Построить все каркасные (остовные) деревья**  
 ![alt text](https://github.com/schastny/p99/raw/master/img/p83.gif)
-Write a predicate s_tree(Graph,Tree) to construct (by backtracking) all spanning trees of a given graph. 
-With this predicate, find out how many spanning trees there are for the graph depicted to the left. 
-The data of this example graph can be found in the file p6_04.dat. 
-When you have a correct solution for the s_tree/2 predicate, use it to define two other useful predicates: is_tree(Graph) and is_connected(Graph). 
-Both are five-minutes tasks!
+*Каркасное дерево* [Spanning tree](http://en.wikipedia.org/wiki/Spanning_tree) состоит из некоторого подмножества рёбер графа, 
+таких, что из любой вершины графа можно попасть в любую другую вершину, двигаясь по этим рёбрам, и в нём нет циклов.  
+
+Напишите метод s_tree(Graph,Tree) для построения всех возможных каркасных деревьев для заданного графа.
+Используя данный метод, определите, сколько каркасных деревьев существует у графа, приведённого слева на картинке.
+Строчное представление к данному графу находится в файле [p6_04.dat](https://github.com/schastny/p99/raw/master/files/p6_04.dat) 
+Когда у вас будет корректная реализация s_tree/2, используйте её для определения двух других полезных методов: 
+is_tree(Graph) и is_connected(Graph). 
+Оба метода не должны занять у вас много времени!
 
 **6.05 (\*\*) Construct the minimal spanning tree**  
 ![alt text](https://github.com/schastny/p99/raw/master/img/p84.gif)
