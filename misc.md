@@ -23,23 +23,23 @@
 Определите отношение jump(N,X/Y,U/V) для выражения факта, что конь может прыгнуть из поля X/Y в поле U/V 
 на шахматной доске размером NxN. И наконец, представьте решение задачи в виде списка позиций.
 
-**7.03 (\*\*\*) Von Koch's conjecture**  
-Several years ago I met a mathematician who was intrigued by a problem for which he didn't know a solution. 
-His name was Von Koch, and I don't know whether the problem has been solved since.  
+**7.03 (\*\*\*) Гипотеза Вон Коха (Von Koch's conjecture)**  
+Несколько лет назад я встретил математика, который был заинтригован задачей, для которой он не знал решения. 
+Его звали Вон Кох, и я не знаю решил ли он эту задачу.  
 
 ![alt text](https://github.com/schastny/p99/raw/master/img/p92a.gif)
-Anyway, the puzzle goes like this: Given a tree with N nodes (and hence N-1 edges). 
-Find a way to enumerate the nodes from 1 to N and, accordingly, the edges from 1 to N-1 in such a way, 
-that for each edge K the difference of its node numbers equals to K. 
-The conjecture is that this is always possible.
+Как бы то ни было, задача звучала так: дано дерево с N вершинами (а значит с N-1 рёбрами).
+Найдите способ пронумеровать вершины от 1 до N, и соответственно, рёбра с 1 до N таким образом, чтобы 
+для каждого ребра K разница значений его вершин была K. 
+Гипотеза такова, что такое решение всегда возможно.
 
-For small trees the problem is easy to solve by hand. 
-However, for larger trees, and 14 is already very large, it is extremely difficult to find a solution. 
-And remember, we don't know for sure whether there is always a solution!
+Для небольших деревьев задачу легко решить вручную. 
+А вот для деревьев побольше, скажем на 14 вершин, уже становится очень трудно найти решение. 
+И помните, что мы не знаем наверняка, будет ли вообще решение для какого-нибудь конкретного случая!
 
 ![alt text](https://github.com/schastny/p99/raw/master/img/p92b.gif)  
-Write a predicate that calculates a numbering scheme for a given tree. 
-What is the solution for the larger tree pictured above?
+Напишите предикат, который вычисляет схему нумерования для заданного дерева. 
+Найдите решение для дерева, представленного на картинке сверху.
 
 **7.04 (\*\*\*) An arithmetic puzzle**  
 Given a list of integer numbers, find a correct way of inserting arithmetic signs (operators) 
