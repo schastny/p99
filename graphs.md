@@ -65,8 +65,8 @@
 
 ![alt text](https://github.com/schastny/p99/raw/master/img/graph2.gif)  
 Если рёбра имеют направление, то из называют дугами. 
-Дуга — это ориентированное ребро. Дуги записываются в виде упорядоченных пар. 
-А сам граф — ориентированный (directed graph, digraph). 
+**Дуга** — это ориентированное ребро. Дуги записываются в виде упорядоченных пар. 
+А сам граф — **ориентированный** или орграф (directed graph, digraph). 
 Для записи ориентированных графов форма записи немного меняется. 
 Например, граф, изображённый на картинке, записывается следующим образом:  
 
@@ -83,32 +83,39 @@
 *Adjacency-list form*
 
     [n(r,[]),n(s,[r,u]),n(t,[]),n(u,[r]),n(v,[u])]
-Отметьте, что в данной записи не будет информации, является ли этот граф простым или ориентированным.
+(Отметьте, что в данной записи не будет информации, является ли этот граф простым или ориентированным)
 
 *Human-friendly form*
 
     [s > r, t, u > r, s > u, u > s, v > u] 
 
 ![alt text](https://github.com/schastny/p99/raw/master/img/graph3.gif)  
-Finally, graphs and digraphs may have additional information attached to nodes and edges (arcs). 
-For the nodes, this is no problem, as we can easily replace the single character identifiers with arbitrary compound terms, 
-such as city('London',4711). On the other hand, for edges we have to extend our notation. 
-Graphs with additional information attached to edges are called labeled graphs.
+И наконец, графы и орграфы могут иметь дополнительную информацию, добавленную к вершинам и рёбрам (дугам). 
+Для вершин это не проблема, так как мы без труда можем заменить единичный символ на совтавной термин, например city('London',4711). 
+Тогда как для рёбер нам придётся расширить нашу нотацию.
+Графы с дополнительной информацией, прикреплённой к рёбрам, называются **помеченный граф** (labeled graph). 
 
-Arc-clause form
-        arc(m,q,7).
-        arc(p,q,9).
-        arc(p,m,5).
-Graph-term form
+*Arc-clause form*
+
+    arc(m,q,7).
+    arc(p,q,9).
+    arc(p,m,5).
+    
+*Graph-term form*
+
     digraph([k,m,p,q],[a(m,p,7),a(p,m,5),a(p,q,9)])
-Adjacency-list form
+    
+*Adjacency-list form*
+
     [n(k,[]),n(m,[q/7]),n(p,[m/5,q/9]),n(q,[])]
-    Notice how the edge information has been packed into a term with functor '/' and arity 2, together with the corresponding node.
-Human-friendly form
+(Отметьте, как информация по рёбрам была упакована с соответствующей вершиной в терм с функтором '/' и арностью 2)
+
+*Human-friendly form*
+
     [p>q/9, m>q/7, k, p>m/5]
 
-The notation for labeled graphs can also be used for so-called multi-graphs, 
-where more than one edge (or arc) are allowed between two given nodes.
+Нотация для помеченных графов так же может использоваться для так называемых мультиграфов ([multigraph](http://en.wikipedia.org/wiki/Multigraph)), 
+в которых разрешено иметь более одного ребра (дуги) между двумя вершинами.  
 
 **6.01 (\*\*\*) Conversions**  
 Write predicates to convert between the different graph representations. 
