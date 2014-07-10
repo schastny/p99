@@ -41,28 +41,41 @@
 Напишите предикат, который вычисляет схему нумерования для заданного дерева. 
 Найдите решение для дерева, представленного на картинке сверху.
 
-**7.04 (\*\*\*) An arithmetic puzzle**  
-Given a list of integer numbers, find a correct way of inserting arithmetic signs (operators) 
-such that the result is a correct equation. 
-Example: With the list of numbers [2,3,5,7,11] we can form the equations 2-3+5+7 = 11 or 2 = (3*5+7)/11 (and ten others!).
+**7.04 (\*\*\*) Арифметическая головоломка**  
+Дан список целых чисел, найдите способ вставки арифметических знаков (сложения, вычитания, умножения, деления и знака равенства), 
+таких, чтобы в результате получилось верное равенство. 
+Пример: Из следующего списка чисел 
 
-**7.05 (\*\*) English number words**  
-On financial documents, like cheques, numbers must sometimes be written in full words. 
-Example: 175 must be written as one-seven-five. 
-Write a predicate full_words/1 to print (non-negative) integer numbers in full words.
+    [2,3,5,7,11] 
 
-**7.06 (\*\*) Syntax checker**  
+мы можем составить следующие равенства
+    
+    2-3+5+7 = 11 или 
+    2 = (3*5+7)/11 (или десять других!)
+
+**7.05 (\*\*) Запись чисел словами**  
+В финансовых документах (например, чеках) числа иногда должны быть записаны прописью, а не цифрами.
+Пример:
+ 
+    вместо 175  - "сто семьдесят пять".
+    
+Напишите метод full_words/1 для печати чисел словами.
+
+**7.06 (\*\*) Проверка синтаксиса**  
 ![alt text](https://github.com/schastny/p99/raw/master/img/p96.gif)
-In a certain programming language (Ada) identifiers are defined by the syntax diagram (railroad chart) opposite. 
-Transform the syntax diagram into a system of syntax diagrams which do not contain loops; i.e. which are purely recursive. 
-Using these modified diagrams, write a predicate identifier/1 that can check whether or not a given string is a legal identifier.
+В одном языке программирования (Ада) идентификаторы определяются синтаксическими диаграммами (syntax diagram, railroad chart), 
+как на примере на картинке. 
+Преобразуйте синтаксическую диаграмму в систему синтаксических диаграмм, которые не имеют петель, 
+то есть которые являются полностью рекурсивными.  
+Используя эти модифицированные диаграммы, напишите метод identifier/1, 
+который проверяет является ли заданная строка Str легальным идентификатором.
 
-    % identifier(Str) :- Str is a legal identifier
+    % identifier(Str)
 
-**7.07 (\*\*) Sudoku**  
-Sudoku puzzles go like this:
+**7.07 (\*\*) Судоку**  
+Головоломки судоку выглядят следующим образом:
 
-       Problem statement                 Solution
+        Исходный квадрат                 Решение
 
         .  .  4 | 8  .  . | .  1  7	     9  3  4 | 8  2  5 | 6  1  7	     
                 |         |                      |         |
@@ -82,11 +95,12 @@ Sudoku puzzles go like this:
                 |         |                      |         |
         2  4  . | .  .  1 | 5  .  .      2  4  6 | 3  9  1 | 5  7  8
       
-Every spot in the puzzle belongs to a (horizontal) row and a (vertical) column, 
-as well as to one single 3x3 square (which we call "square" for short). 
-At the beginning, some of the spots carry a single-digit number between 1 and 9. 
-The problem is to fill the missing spots with digits in such a way that every number between 1 and 9 appears exactly once in each row, 
-in each column, and in each square.
+Поле головоломки состоит из горизонтальных рядов и вертикальных столбцов, 
+которые на пересечении содержат цифры (или точки, куда надо вписать цифру).
+Поле поделено на квадраты 3x3.
+
+Задача - вписать в недостающие места (обозначенные точками) цифры из набора от 1 до 9, следуя таким правилам:
+каждое число из набора 1..9 встречается в каждом ряду, столбце, квадрате 3x3 только один раз.
 
 **7.08 (\*\*\*) Nonograms**  
 Around 1994, a certain kind of puzzles was very popular in England. 
