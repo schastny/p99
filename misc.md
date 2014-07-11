@@ -143,16 +143,16 @@
 Задача - разместить слова в кроссворде.  
 ![alt text](https://github.com/schastny/p99/raw/master/img/p99.gif)
 
-The particular crossword puzzle is specified in a text file which first lists the words (one word per line) in an arbitrary order. 
-Then, after an empty line, the crossword framework is defined. 
-In this framework specification, an empty character location is represented by a dot (.). 
-In order to make the solution easier, character locations can also contain predefined character values. 
-The puzzle opposite is defined in the file p7_09a.dat, other examples are p7_09b.dat and p7_09d.dat. 
-There is also an example of a puzzle (p7_09c.dat) which does not have a solution.
+Кроссворд записан в виде текстового файла, в котором сначала перечислены слова к нему (каждое слово с новой строки) в произвольном порядке. 
+Потом, после пустой строки, описана конфигарация кроссворда. 
+В этой конфигурации пустое место в слове обозначено точкой (.). 
+Для того, чтобы облегчить задачу, некоторые позиции уже могут содержать буквы от слов. 
+Кроссворд, приведённый на картинке, описан в файле [p7_09a.dat](https://github.com/schastny/p99/raw/master/files/p7_09a.dat), так же ещё имеются другие примеры кроссвордов: [p7_09b.dat](https://github.com/schastny/p99/raw/master/files/p7_09b.dat) и [p7_09d.dat](https://github.com/schastny/p99/raw/master/files/p7_09d.dat). 
+Наконец, в файле [p7_09c.dat](https://github.com/schastny/p99/raw/master/files/p7_09c.dat) показан пример кроссворда, который не имеет решения.
 
-Words are strings (character lists) of at least two characters. 
-A horizontal or vertical sequence of character places in the crossword puzzle framework is called a site. 
-Our problem is to find a compatible way of placing words onto sites.
+Словами в кроссворде являются строки с длиной от двух символов. 
+Горизонтальная или вертикальная последовательность позиций в кроссворде называется место под слово. 
+Наша задача состоит в нахождении способа поместить все слова в подходящие места в кроссворде.  
 
 Подсказки:  
 1) Это непростая задача. Вам понадобится некоторое время чтобы поразмыслить над ней. 
