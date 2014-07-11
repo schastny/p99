@@ -1,4 +1,4 @@
-##P-99: Ninety-Nine Prolog Problems (P-99: 99 задач на Прологе)  
+##P-99: 99 задач на Прологе (P-99: Ninety-Nine Prolog Problems)  
 Original: https://sites.google.com/site/prologsite/prolog-problems  
 Автор: Werner Hett    
 
