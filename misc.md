@@ -138,9 +138,9 @@
 которые дают полные длины строк и столбцов, сверху-вниз, слева-направо. 
 Публикуемые в газетах кроссворды обычно больше приведённого примера (например 25ч20) и обычно имеют уникальное решение.
 
-**7.09 (\*\*\*) Crossword puzzle**  
-Given an empty (or almost empty) framework of a crossword puzzle and a set of words. 
-The problem is to place the words into the framework.  
+**7.09 (\*\*\*) Кроссворды**  
+Дан пустой (или почти полностью пустой) кроссворд и набор слов к нему. 
+Задача - разместить слова в кроссворде.  
 ![alt text](https://github.com/schastny/p99/raw/master/img/p99.gif)
 
 The particular crossword puzzle is specified in a text file which first lists the words (one word per line) in an arbitrary order. 
@@ -154,12 +154,12 @@ Words are strings (character lists) of at least two characters.
 A horizontal or vertical sequence of character places in the crossword puzzle framework is called a site. 
 Our problem is to find a compatible way of placing words onto sites.
 
-Hints:
-1) The problem is not easy. You will need some time to thoroughly understand it. 
-So, don't give up too early! And remember that the objective is a clean solution, not just a quick-and-dirty hack!
-2) Reading the data file is a tricky problem for which a solution is provided in the file p7_09-readfile.pl. 
-Use the predicate read_lines/2.
-3) For efficiency reasons it is important, at least for larger puzzles, to sort the words and the sites in a particular order. 
-For this part of the problem, the solution of 1.28 may be very helpful. 
+Подсказки:  
+1) Это непростая задача. Вам понадобится некоторое время чтобы поразмыслить над ней. 
+Так что не здавайтесь слишком рано! И помните, что цель задачи - получить красивый и правильный алгоритм, а не грязный хак.  
+2) Чтение файла с исходными данными также является хитрой задачей, для которой используйте готоворе решение, предоставленное в файле 
+[p7_09-readfile.pl](https://github.com/schastny/p99/raw/master/files/p7_09-readfile.pl). Используйте метод read_lines/2.  
+3) В целях эффективности очень важно для кроссвордов больших размеров отсортировать слова и клетки для них в определённом порядке. 
+Для этого вам может понадобиться решение из задачи 1.28.  
 
 [Предыдущая глава](graphs.md) | [Оглавление](README.md) | Следующая глава
